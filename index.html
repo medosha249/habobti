@@ -8,74 +8,26 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#e63950;
-  --rose-light:#ff6b7a;
-  --violet:#7c3aed;
-  --violet-light:#a78bfa;
-  --blue:#2563eb;
-  --blue-light:#60a5fa;
-  --gold:#f59e0b;
-  --gold-light:#fcd34d;
-  --dark:#080616;
-  --dark2:#0f0a24;
-  --card:rgba(255,255,255,0.04);
-  --card-border:rgba(255,255,255,0.09);
-  --cream:#f0eeff;
-  --muted:rgba(240,238,255,0.45);
-  --glass:rgba(255,255,255,0.05);
-  --glass-border:rgba(255,255,255,0.08);
+  --rose:#e63950;--rose-light:#ff6b7a;--violet:#7c3aed;--violet-light:#a78bfa;
+  --blue:#2563eb;--blue-light:#60a5fa;--gold:#f59e0b;--gold-light:#fcd34d;
+  --dark:#080616;--cream:#f0eeff;--muted:rgba(240,238,255,0.45);
+  --glass:rgba(255,255,255,0.05);--glass-border:rgba(255,255,255,0.08);
 }
-body{
-  background:var(--dark);
-  color:var(--cream);
-  font-family:'Tajawal',sans-serif;
-  overflow-x:hidden;
-  min-height:100vh;
-}
-body::before{
-  content:'';
-  position:fixed;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(124,58,237,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(230,57,80,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(37,99,235,0.08) 0%, transparent 70%);
-  pointer-events:none;
-}
-#lock{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--dark);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:1.8rem;
-}
-.lock-glass{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:32px;
-  padding:2.5rem 2rem;
-  display:flex;flex-direction:column;
-  align-items:center;gap:1.8rem;
-  width:100%;max-width:320px;
-  backdrop-filter:blur(20px);
-}
+body{background:var(--dark);color:var(--cream);font-family:'Tajawal',sans-serif;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(124,58,237,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(230,57,80,0.14) 0%,transparent 55%);pointer-events:none}
+
+/* LOCK */
+#lock{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lock-glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:32px;padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.8rem;width:100%;max-width:320px;backdrop-filter:blur(20px)}
 .lock-emoji{font-size:3rem;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .lock-title{font-family:'Amiri',serif;font-size:1.7rem;background:linear-gradient(135deg,var(--gold-light),var(--rose-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .lock-sub{font-size:.85rem;color:var(--muted)}
 .pin-dots{display:flex;gap:.9rem}
-.dot{
-  width:14px;height:14px;border-radius:50%;
-  border:1.5px solid rgba(255,255,255,0.2);
-  background:transparent;transition:all .2s;
-}
+.dot{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.2);background:transparent;transition:all .2s}
 .dot.on{background:var(--rose);border-color:var(--rose);box-shadow:0 0 12px rgba(230,57,80,0.7)}
 .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;width:100%}
-.key{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:16px;padding:.85rem;
-  color:var(--cream);font-size:1.4rem;font-family:'Tajawal',sans-serif;
-  cursor:pointer;transition:all .15s;user-select:none;
-}
+.key{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:.85rem;color:var(--cream);font-size:1.4rem;font-family:'Tajawal',sans-serif;cursor:pointer;transition:all .15s;user-select:none}
 .key:hover{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.4)}
 .key:active{transform:scale(.92)}
 .key.empty{visibility:hidden;pointer-events:none}
@@ -86,133 +38,71 @@ body::before{
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 #lock.fade-out{animation:fadeOut .7s ease forwards}
 @keyframes fadeOut{to{opacity:0;pointer-events:none}}
-#role-screen{
-  position:fixed;inset:0;z-index:9998;
-  background:var(--dark);
-  display:none;flex-direction:column;
-  align-items:center;justify-content:center;gap:2rem;
-}
+
+/* ROLE */
+#role-screen{position:fixed;inset:0;z-index:9998;background:var(--dark);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
 #role-screen.show{display:flex}
 .role-title{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--gold-light),var(--violet-light));-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
-.role-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
-.role-btn{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;padding:1.1rem 2.5rem;
-  font-family:'Tajawal',sans-serif;font-size:1.1rem;
-  color:var(--cream);cursor:pointer;transition:all .3s;
-}
+.role-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.role-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:1.1rem 2.5rem;font-family:'Tajawal',sans-serif;font-size:1.1rem;color:var(--cream);cursor:pointer;transition:all .3s}
 .role-btn:hover{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.5);transform:translateY(-3px)}
+
+/* APP */
 #app{display:none;flex-direction:column;min-height:100vh;position:relative;z-index:1}
 #app.show{display:flex}
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.75rem 1.2rem;
-  background:rgba(8,6,22,0.8);
-  backdrop-filter:blur(24px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
-}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.2rem;background:rgba(8,6,22,0.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
 .nav-logo{font-family:'Amiri',serif;font-size:1.25rem;background:linear-gradient(90deg,var(--gold-light),var(--rose-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-links{display:flex;gap:.25rem;overflow-x:auto}
-.nav-link{
-  background:none;border:none;
-  color:var(--muted);font-size:.78rem;
-  font-family:'Tajawal',sans-serif;
-  cursor:pointer;padding:.4rem .7rem;
-  border-radius:10px;transition:all .2s;white-space:nowrap;
-}
+.nav-link{background:none;border:none;color:var(--muted);font-size:.78rem;font-family:'Tajawal',sans-serif;cursor:pointer;padding:.4rem .7rem;border-radius:10px;transition:all .2s;white-space:nowrap;position:relative}
 .nav-link:hover,.nav-link.active{color:var(--cream);background:rgba(255,255,255,0.07)}
 .nav-link.active{background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(230,57,80,0.15));border:1px solid rgba(124,58,237,0.2)}
+.nav-badge{position:absolute;top:2px;right:2px;background:var(--rose);color:white;border-radius:50%;width:16px;height:16px;font-size:.6rem;display:none;align-items:center;justify-content:center}
+.nav-badge.show{display:flex}
+
+/* PAGES */
 .page{display:none;padding-top:62px;min-height:100vh}
 .page.active{display:block}
+
+/* HOME */
 #page-home{display:none;padding:70px 1rem 3rem;flex-direction:column;align-items:center;gap:1.2rem}
 #page-home.active{display:flex}
 .bento{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;width:100%;max-width:520px}
-.bento-card{
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  border-radius:24px;padding:1.4rem 1.2rem;
-  backdrop-filter:blur(12px);
-  transition:transform .3s,border-color .3s;
-  position:relative;overflow:hidden;
-}
-.bento-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,transparent 60%);
-  pointer-events:none;
-}
+.bento-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:1.4rem 1.2rem;backdrop-filter:blur(12px);transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.bento-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,transparent 60%);pointer-events:none}
 .bento-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.15)}
 .bento-wide{grid-column:1/-1}
-.bento-hero{
-  grid-column:1/-1;text-align:center;padding:2rem 1.2rem;
-  background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(230,57,80,0.08));
-  border-color:rgba(124,58,237,0.2);
-}
-.hero-title{
-  font-family:'Amiri',serif;
-  font-size:clamp(3rem,12vw,6rem);
-  background:linear-gradient(135deg,var(--gold-light),var(--rose-light),var(--violet-light));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  line-height:1;margin-bottom:.4rem;
-}
+.bento-hero{grid-column:1/-1;text-align:center;padding:2rem 1.2rem;background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(230,57,80,0.08));border-color:rgba(124,58,237,0.2)}
+.hero-title{font-family:'Amiri',serif;font-size:clamp(3rem,12vw,6rem);background:linear-gradient(135deg,var(--gold-light),var(--rose-light),var(--violet-light));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;margin-bottom:.4rem}
 .hero-sub{font-size:.9rem;color:var(--muted);line-height:1.7}
 .counter-label{font-size:.65rem;letter-spacing:3px;color:var(--gold-light);opacity:.7;margin-bottom:.8rem}
 .counter-nums{display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap}
 .c-unit{display:flex;flex-direction:column;align-items:center}
-.c-num{
-  font-family:'Amiri',serif;
-  font-size:clamp(2rem,8vw,3.5rem);
-  line-height:1;color:transparent;
-  background:linear-gradient(135deg,var(--gold-light),#fff);
-  -webkit-background-clip:text;background-clip:text;font-weight:700;
-}
+.c-num{font-family:'Amiri',serif;font-size:clamp(2rem,8vw,3.5rem);line-height:1;color:transparent;background:linear-gradient(135deg,var(--gold-light),#fff);-webkit-background-clip:text;background-clip:text;font-weight:700}
 .c-lbl{font-size:.6rem;color:var(--muted);letter-spacing:2px}
 .c-sep{font-size:1.8rem;color:var(--rose);opacity:.5;margin-bottom:.8rem}
-.counter-since{font-family:'Amiri',serif;font-size:.8rem;color:var(--muted);margin-top:.6rem;text-align:center}
 .love-card{cursor:pointer;text-align:center}
 .love-card-emoji{font-size:2rem;margin-bottom:.5rem}
 .love-card-text{font-family:'Amiri',serif;font-size:.95rem;color:var(--cream);line-height:1.8}
 .love-card-hint{font-size:.65rem;color:var(--muted);margin-top:.6rem}
-.stat-num{
-  font-family:'Amiri',serif;font-size:2rem;
-  background:linear-gradient(135deg,var(--violet-light),var(--blue-light));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.stat-num{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--violet-light),var(--blue-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat-label{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+
+/* PAGE HEADER */
 .page-header{text-align:center;padding:2rem 0 1.5rem}
-.page-header h2{
-  font-family:'Amiri',serif;font-size:2rem;
-  background:linear-gradient(135deg,var(--gold-light),var(--rose-light));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.page-header h2{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--gold-light),var(--rose-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .page-header p{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+
+/* GALLERY */
 #page-gallery{padding:62px 1rem 3rem}
-.gallery-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-  gap:.75rem;max-width:900px;margin:0 auto;
-}
-.gallery-item{
-  aspect-ratio:1;border-radius:18px;overflow:hidden;
-  position:relative;cursor:pointer;
-  border:1px solid var(--glass-border);transition:transform .3s;
-}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem;max-width:900px;margin:0 auto}
+.gallery-item{aspect-ratio:1;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--glass-border);transition:transform .3s}
 .gallery-item:hover{transform:scale(1.04)}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
-.gallery-item-overlay{
-  position:absolute;inset:0;background:rgba(8,6,22,.55);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .3s;font-size:1.5rem;
-}
+.gallery-item-overlay{position:absolute;inset:0;background:rgba(8,6,22,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;font-size:1.5rem}
 .gallery-item:hover .gallery-item-overlay{opacity:1}
-.upload-card{
-  aspect-ratio:1;border-radius:18px;
-  border:2px dashed rgba(255,255,255,0.1);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:.5rem;
-  cursor:pointer;background:rgba(255,255,255,0.02);
-  transition:all .3s;position:relative;overflow:hidden;
-}
+.upload-card{aspect-ratio:1;border-radius:18px;border:2px dashed rgba(255,255,255,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;background:rgba(255,255,255,0.02);transition:all .3s;position:relative;overflow:hidden}
 .upload-card:hover{border-color:rgba(124,58,237,0.5);background:rgba(124,58,237,0.06)}
 .upload-card input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .upload-icon{font-size:1.8rem;opacity:.35}
@@ -222,6 +112,8 @@ nav{
 #lightbox.open{display:flex}
 #lightbox img{max-width:92vw;max-height:88vh;border-radius:16px}
 .lb-close{position:absolute;top:1rem;right:1rem;background:rgba(230,57,80,0.4);border:none;color:white;width:38px;height:38px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+/* SORRY */
 #page-sorry{display:none;padding:70px 1rem 3rem;align-items:center;justify-content:center;flex-direction:column;min-height:100vh;gap:1.5rem}
 #page-sorry.active{display:flex}
 .sorry-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:28px;padding:2rem 1.5rem;max-width:440px;width:100%;backdrop-filter:blur(12px)}
@@ -233,21 +125,96 @@ nav{
 .sorry-reason:hover{background:rgba(230,57,80,0.12)}
 .sorry-reason.checked{background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.3)}
 .sorry-cta{background:linear-gradient(135deg,var(--rose),#a02035);border:none;border-radius:16px;padding:.9rem;color:white;font-family:'Tajawal',sans-serif;font-size:1rem;cursor:pointer;transition:all .3s;width:100%;margin-top:1rem}
-.sorry-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(230,57,80,0.3)}
 .sorry-reply{font-family:'Amiri',serif;font-size:.95rem;color:var(--gold-light);margin-top:1rem;min-height:1.5rem;transition:all .3s}
-#page-msgs{padding:62px 1rem 3rem;display:none}
-#page-msgs.active{display:block}
-.msgs-container{max-width:500px;margin:0 auto}
-.msg-input-wrap{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:1.2rem;margin-bottom:1.2rem;backdrop-filter:blur(12px)}
-.msg-input-wrap textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:.9rem 1rem;color:var(--cream);font-family:'Amiri',serif;font-size:.95rem;line-height:1.8;resize:none;height:90px;outline:none;transition:border-color .2s}
-.msg-input-wrap textarea:focus{border-color:rgba(124,58,237,0.4)}
-.msg-send-btn{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:12px;padding:.75rem 1.5rem;color:white;font-family:'Tajawal',sans-serif;font-size:.9rem;cursor:pointer;width:100%;margin-top:.6rem;transition:all .3s}
-.msg-send-btn:hover{opacity:.9;transform:translateY(-1px)}
-.msg-list{display:flex;flex-direction:column;gap:.7rem}
-.msg-bubble{padding:1rem 1.2rem;border-radius:20px;font-family:'Amiri',serif;font-size:.95rem;line-height:1.8;position:relative}
-.msg-bubble.me{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(37,99,235,0.15));border:1px solid rgba(124,58,237,0.2);border-radius:20px 20px 4px 20px}
-.msg-bubble.her{background:linear-gradient(135deg,rgba(230,57,80,0.15),rgba(124,58,237,0.1));border:1px solid rgba(230,57,80,0.2);border-radius:20px 20px 20px 4px;text-align:right}
-.msg-meta{font-size:.65rem;color:var(--muted);margin-top:.3rem}
+
+/* ══════════════════════════════════
+   MESSAGES - واتساب ستايل
+══════════════════════════════════ */
+#page-msgs{padding:62px 0 0;display:none;flex-direction:column;height:100vh}
+#page-msgs.active{display:flex}
+.chat-header{padding:.8rem 1rem;background:rgba(8,6,22,0.9);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--rose));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.chat-name{font-weight:600;font-size:.95rem}
+.chat-status{font-size:.72rem;color:var(--muted)}
+.chat-body{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.5rem;background:rgba(0,0,0,0.2)}
+.chat-body::-webkit-scrollbar{width:4px}
+.chat-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px}
+.msg-row{display:flex;align-items:flex-end;gap:.5rem}
+.msg-row.me{flex-direction:row-reverse}
+.msg-row.her{flex-direction:row}
+.msg-avatar-sm{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.msg-avatar-sm.me-av{background:linear-gradient(135deg,var(--violet),var(--blue))}
+.msg-avatar-sm.her-av{background:linear-gradient(135deg,var(--rose),#f472b6)}
+.bubble{max-width:72%;padding:.65rem .9rem;border-radius:18px;font-family:'Amiri',serif;font-size:.95rem;line-height:1.7;position:relative;word-break:break-word}
+.bubble.me{background:linear-gradient(135deg,rgba(124,58,237,0.35),rgba(37,99,235,0.25));border:1px solid rgba(124,58,237,0.25);border-radius:18px 18px 4px 18px}
+.bubble.her{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px 18px 18px 4px}
+.bubble-time{font-size:.6rem;color:var(--muted);margin-top:.3rem;text-align:left;direction:ltr}
+.bubble.me .bubble-time{text-align:right}
+.bubble-tick{font-size:.65rem;margin-right:.2rem}
+.chat-date-divider{text-align:center;font-size:.7rem;color:var(--muted);margin:.5rem 0;background:rgba(255,255,255,0.04);border-radius:20px;padding:.25rem .8rem;display:inline-block;align-self:center}
+.chat-footer{padding:.6rem .8rem;background:rgba(8,6,22,0.9);border-top:1px solid var(--glass-border);display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.chat-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:.65rem 1rem;color:var(--cream);font-family:'Amiri',serif;font-size:.95rem;outline:none;resize:none;max-height:100px;min-height:42px}
+.chat-input:focus{border-color:rgba(124,58,237,0.4)}
+.chat-send{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:50%;width:42px;height:42px;color:white;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
+.chat-send:hover{transform:scale(1.1)}
+.chat-empty{text-align:center;color:var(--muted);font-family:'Amiri',serif;font-size:.9rem;margin:auto;padding:2rem}
+
+/* ══════════════════════════════════
+   MUSIC PAGE - البوماتي
+══════════════════════════════════ */
+#page-music{padding:62px 1rem 140px;display:none}
+#page-music.active{display:block}
+.music-search-wrap{max-width:540px;margin:0 auto}
+.music-search-box{display:flex;gap:.6rem;margin-bottom:1.2rem}
+.music-search-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:.75rem 1rem;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:.95rem;outline:none}
+.music-search-input:focus{border-color:rgba(124,58,237,0.4)}
+.music-search-btn{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:14px;padding:.75rem 1.2rem;color:white;font-family:'Tajawal',sans-serif;font-size:.9rem;cursor:pointer;white-space:nowrap}
+.music-results{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
+.music-result-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:.9rem 1rem;display:flex;align-items:center;gap:.9rem;cursor:pointer;transition:all .25s}
+.music-result-item:hover{border-color:rgba(124,58,237,0.4);background:rgba(124,58,237,0.08)}
+.music-result-item.playing{border-color:rgba(230,57,80,0.5);background:rgba(230,57,80,0.08)}
+.mri-icon{font-size:1.5rem;flex-shrink:0}
+.mri-info{flex:1;min-width:0}
+.mri-title{font-size:.9rem;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mri-artist{font-size:.75rem;color:var(--muted)}
+.mri-actions{display:flex;gap:.5rem;flex-shrink:0}
+.mri-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:.3rem .6rem;color:var(--muted);font-size:.75rem;cursor:pointer;transition:all .2s}
+.mri-btn:hover{color:var(--cream);border-color:rgba(255,255,255,0.3)}
+.mri-btn.fav{color:var(--gold-light);border-color:rgba(245,158,11,0.3)}
+.music-fav-section{margin-top:1rem}
+.music-fav-title{font-size:.75rem;letter-spacing:3px;color:var(--gold-light);opacity:.7;margin-bottom:.8rem}
+.music-status{text-align:center;font-size:.85rem;color:var(--muted);padding:1rem}
+
+/* BOTTOM MUSIC PLAYER */
+.bottom-player{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:rgba(8,6,22,0.97);
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:.8rem 1rem;
+  backdrop-filter:blur(24px);
+  transform:translateY(100%);
+  transition:transform .3s ease;
+}
+.bottom-player.show{transform:translateY(0)}
+.player-track{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+.player-thumb{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--violet),var(--rose));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.player-info{flex:1;min-width:0}
+.player-title{font-size:.85rem;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-artist{font-size:.72rem;color:var(--muted)}
+.player-controls{display:flex;align-items:center;gap:.8rem;justify-content:center}
+.player-btn{background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;transition:all .2s;padding:.3rem}
+.player-btn:hover{color:var(--cream)}
+.player-play{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:50%;width:38px;height:38px;color:white;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.player-play:hover{transform:scale(1.1)}
+.player-progress{display:flex;align-items:center;gap:.6rem;margin-top:.5rem}
+.progress-bar{flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:4px;cursor:pointer;position:relative}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--rose));border-radius:4px;transition:width .3s}
+.progress-time{font-size:.65rem;color:var(--muted);white-space:nowrap}
+.player-vol{display:flex;align-items:center;gap:.4rem;margin-top:.4rem}
+.vol-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,0.1);border-radius:3px;outline:none}
+.vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--violet-light);cursor:pointer}
+
+/* PROMISES */
 #page-promises{padding:62px 1rem 3rem;display:none}
 #page-promises.active{display:block}
 .promises-wrap{max-width:500px;margin:0 auto}
@@ -262,6 +229,8 @@ nav{
 .promise-progress{background:rgba(255,255,255,0.04);border-radius:50px;height:6px;margin:1.2rem 0 1.5rem;overflow:hidden}
 .promise-bar{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--violet),var(--rose));transition:width .5s ease}
 .promise-pct{text-align:center;font-size:.8rem;color:var(--muted);margin-bottom:1rem}
+
+/* GAMES */
 #page-games{padding:62px 1rem 3rem;display:none}
 #page-games.active{display:block}
 .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:500px;margin:0 auto}
@@ -282,8 +251,6 @@ nav{
 .card-back{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transform:rotateY(180deg);font-family:'Amiri',serif;font-size:1rem;color:var(--cream);line-height:1.8}
 .game-btn{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:14px;padding:.8rem 2rem;color:white;font-family:'Tajawal',sans-serif;font-size:.95rem;cursor:pointer;transition:all .3s;margin:.3rem}
 .game-btn:hover{opacity:.9;transform:translateY(-1px)}
-.game-btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--muted)}
-.game-btn.outline:hover{border-color:rgba(255,255,255,0.3);color:var(--cream)}
 .love-meter{background:rgba(255,255,255,0.04);border-radius:50px;height:12px;margin:1rem 0;overflow:hidden}
 .love-meter-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--rose),var(--violet));transition:width .6s ease}
 .love-score{font-family:'Amiri',serif;font-size:2.5rem;color:var(--rose-light);margin:.5rem 0}
@@ -293,19 +260,18 @@ nav{
 .quiz-opt.correct{background:rgba(34,197,94,0.15);border-color:rgba(34,197,94,0.4);color:#86efac}
 .quiz-opt.wrong{background:rgba(230,57,80,0.15);border-color:rgba(230,57,80,0.3);color:#fca5a5}
 .modal-close{position:absolute;top:1rem;left:1rem;background:rgba(255,255,255,0.06);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.music-player{position:fixed;bottom:1.2rem;left:1.2rem;z-index:200;background:rgba(8,6,22,.9);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:.6rem 1.1rem;display:flex;align-items:center;gap:.7rem;backdrop-filter:blur(24px)}
-.music-play{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:50%;width:32px;height:32px;font-size:.85rem;cursor:pointer;color:white;display:flex;align-items:center;justify-content:center;transition:transform .2s}
-.music-play:hover{transform:scale(1.1)}
-.music-info{font-size:.7rem;color:var(--muted)}
-.music-bars{display:flex;align-items:flex-end;gap:2px;height:16px}
-.bar{width:3px;background:var(--rose);border-radius:2px;animation:bar .7s ease-in-out infinite}
-.bar:nth-child(2){animation-delay:.12s}
-.bar:nth-child(3){animation-delay:.24s}
-.bar:nth-child(4){animation-delay:.36s}
-.bar.stopped{animation-play-state:paused;height:3px!important}
-@keyframes bar{0%,100%{height:4px}50%{height:14px}}
+
+/* TOAST NOTIFICATION */
+.toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%) translateY(-80px);z-index:9999;background:rgba(20,15,40,0.95);border:1px solid rgba(124,58,237,0.4);border-radius:16px;padding:.75rem 1.2rem;display:flex;align-items:center;gap:.7rem;backdrop-filter:blur(20px);transition:transform .4s ease;min-width:250px;max-width:340px}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast-icon{font-size:1.3rem;flex-shrink:0}
+.toast-text{font-family:'Amiri',serif;font-size:.9rem;color:var(--cream);line-height:1.5}
+
+/* FLOATING HEARTS */
 .fheart{position:fixed;pointer-events:none;z-index:9000;font-size:1.5rem;animation:fup 1.1s ease forwards}
 @keyframes fup{0%{opacity:1;transform:translateY(0) scale(.5)}50%{opacity:.9;transform:translateY(-45px) scale(1.1)}100%{opacity:0;transform:translateY(-90px) scale(.7)}}
+
+/* STARS */
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .star{position:absolute;background:white;border-radius:50%;animation:twinkle ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.04}50%{opacity:.6}}
@@ -315,6 +281,13 @@ nav{
 
 <div class="stars" id="stars"></div>
 
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon" id="toastIcon">💬</div>
+  <div class="toast-text" id="toastText"></div>
+</div>
+
+<!-- LOCK -->
 <div id="lock">
   <div class="lock-glass">
     <div class="lock-emoji">🔐</div>
@@ -342,6 +315,7 @@ nav{
   </div>
 </div>
 
+<!-- ROLE -->
 <div id="role-screen">
   <div class="role-title">مين بيفتح دلوقتي؟ 💑</div>
   <div class="role-btns">
@@ -350,6 +324,7 @@ nav{
   </div>
 </div>
 
+<!-- APP -->
 <div id="app">
   <nav>
     <div class="nav-logo">حبوبتي ❤️</div>
@@ -357,12 +332,17 @@ nav{
       <button class="nav-link active" onclick="goPage('home',this)">🏠</button>
       <button class="nav-link" onclick="goPage('gallery',this)">📸</button>
       <button class="nav-link" onclick="goPage('sorry',this)">💌</button>
-      <button class="nav-link" onclick="goPage('msgs',this)">💬 رسايل</button>
+      <button class="nav-link" onclick="goPage('msgs',this)" id="msgsNavBtn">
+        💬 رسايل
+        <span class="nav-badge" id="msgBadge">0</span>
+      </button>
+      <button class="nav-link" onclick="goPage('music',this)">🎵 موسيقى</button>
       <button class="nav-link" onclick="goPage('promises',this)">🤝 وعود</button>
       <button class="nav-link" onclick="goPage('games',this)">🎮 العاب</button>
     </div>
   </nav>
 
+  <!-- HOME -->
   <div class="page active" id="page-home">
     <div class="bento">
       <div class="bento-card bento-hero">
@@ -394,6 +374,7 @@ nav{
     </div>
   </div>
 
+  <!-- GALLERY -->
   <div class="page" id="page-gallery">
     <div class="page-header"><h2>صورنا 📸</h2><p>اللحظات اللي بتفضل معانا دايماً</p></div>
     <div class="gallery-grid" id="galleryGrid">
@@ -406,6 +387,7 @@ nav{
     <div class="gallery-status" id="galStatus"></div>
   </div>
 
+  <!-- SORRY -->
   <div class="page" id="page-sorry">
     <div class="sorry-card">
       <span class="sorry-emoji">💙</span>
@@ -417,17 +399,42 @@ nav{
     </div>
   </div>
 
+  <!-- MESSAGES - واتساب ستايل -->
   <div class="page" id="page-msgs">
-    <div class="page-header"><h2>رسايلنا 💬</h2><p>كلام من القلب يفضل هنا</p></div>
-    <div class="msgs-container">
-      <div class="msg-input-wrap">
-        <textarea id="msgInput" placeholder="اكتب رسالة من قلبك..."></textarea>
-        <button class="msg-send-btn" onclick="sendMsg()">ابعت الرسالة 💌</button>
+    <div class="chat-header">
+      <div class="chat-avatar" id="chatAvatar">🌸</div>
+      <div>
+        <div class="chat-name" id="chatName">حبوبتي</div>
+        <div class="chat-status" id="chatStatus">متصلة الآن 🟢</div>
       </div>
-      <div class="msg-list" id="msgList"></div>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-empty" id="chatEmpty">ابدأ المحادثة يا قمر 💌</div>
+    </div>
+    <div class="chat-footer">
+      <textarea class="chat-input" id="msgInput" placeholder="اكتب رسالة..." rows="1" onkeydown="msgKeydown(event)"></textarea>
+      <button class="chat-send" onclick="sendMsg()">➤</button>
     </div>
   </div>
 
+  <!-- MUSIC PAGE -->
+  <div class="page" id="page-music">
+    <div class="page-header"><h2>🎵 موسيقانا</h2><p>دور على أغنيتك من البوماتي</p></div>
+    <div class="music-search-wrap">
+      <div class="music-search-box">
+        <input class="music-search-input" id="musicSearchInput" placeholder="اسم الأغنية أو المطرب..." onkeydown="if(event.key==='Enter')searchMusic()">
+        <button class="music-search-btn" onclick="searchMusic()">🔍 دور</button>
+      </div>
+      <div id="musicStatus" class="music-status"></div>
+      <div class="music-results" id="musicResults"></div>
+      <div class="music-fav-section" id="favSection" style="display:none">
+        <div class="music-fav-title">⭐ أغنيتنا المفضلة</div>
+        <div id="favTrack"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMISES -->
   <div class="page" id="page-promises">
     <div class="page-header"><h2>وعودنا 🤝</h2><p>الوعود اللي بنعدها لبعض</p></div>
     <div class="promises-wrap">
@@ -438,6 +445,7 @@ nav{
     </div>
   </div>
 
+  <!-- GAMES -->
   <div class="page" id="page-games">
     <div class="page-header"><h2>العابنا 🎮</h2><p>العبوا مع بعض واتمتعوا</p></div>
     <div class="games-grid">
@@ -449,6 +457,7 @@ nav{
   </div>
 </div>
 
+<!-- GAME MODAL -->
 <div class="game-modal" id="gameModal">
   <div class="game-modal-inner">
     <button class="modal-close" onclick="closeGame()">✕</button>
@@ -458,27 +467,47 @@ nav{
   </div>
 </div>
 
+<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLB()">
   <button class="lb-close">✕</button>
   <img id="lbImg" src="" alt="">
 </div>
 
-<div class="music-player">
-  <button class="music-play" id="musicBtn" onclick="toggleMusic()">▶</button>
-  <div class="music-info">🎵 اغنيتنا</div>
-  <div class="music-bars">
-    <div class="bar stopped"></div>
-    <div class="bar stopped"></div>
-    <div class="bar stopped"></div>
-    <div class="bar stopped"></div>
+<!-- BOTTOM MUSIC PLAYER -->
+<div class="bottom-player" id="bottomPlayer">
+  <div class="player-track">
+    <div class="player-thumb">🎵</div>
+    <div class="player-info">
+      <div class="player-title" id="playerTitle">اختار أغنية</div>
+      <div class="player-artist" id="playerArtist">البوماتي</div>
+    </div>
+  </div>
+  <div class="player-controls">
+    <button class="player-btn" onclick="prevTrack()">⏮</button>
+    <button class="player-play" id="playerPlayBtn" onclick="togglePlay()">▶</button>
+    <button class="player-btn" onclick="nextTrack()">⏭</button>
+    <button class="player-btn" id="favBtn" onclick="toggleFav()" title="حفظ كأغنية مفضلة">☆</button>
+  </div>
+  <div class="player-progress">
+    <span class="progress-time" id="timeCurrent">0:00</span>
+    <div class="progress-bar" onclick="seekAudio(event)">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <span class="progress-time" id="timeDuration">0:00</span>
+  </div>
+  <div class="player-vol">
+    <span style="font-size:.8rem">🔈</span>
+    <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="0.8" oninput="setVol(this.value)">
+    <span style="font-size:.8rem">🔊</span>
   </div>
 </div>
-<audio id="audio" loop src="music.mp3"></audio>
+
+<audio id="mainAudio"></audio>
 
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 <script>
-// FIREBASE
+// ══ FIREBASE ══
 var cfg={
   apiKey:"AIzaSyDOxflWMXRninoAJ6DH2CVUR4dNCgzCArs",
   authDomain:"habobti-727fd.firebaseapp.com",
@@ -490,17 +519,9 @@ var cfg={
 };
 firebase.initializeApp(cfg);
 var db=firebase.database();
-window._db=db;
-window._ref=function(path){return db.ref(path);};
-window._set=function(r,v){return r.set(v);};
-window._get=function(r){return r.get();};
-window._onValue=function(r,cb){return r.on('value',cb);};
-window._push=function(r,v){return r.push(v);};
-window._remove=function(r){return r.remove();};
-window._update=function(r,v){return r.update(v);};
-window._fbOK=true;
+var R=function(p){return db.ref(p);};
 
-// STARS
+// ══ STARS ══
 (function(){
   var s=document.getElementById('stars');
   for(var i=0;i<100;i++){
@@ -511,36 +532,26 @@ window._fbOK=true;
   }
 })();
 
-// PIN - الباسورد بأرقام عربية ٢٧
-var PIN='٢٧', pin='';
-
+// ══ PIN ══
+var PIN='٢٧',pin='';
 document.querySelectorAll('.key').forEach(function(k){
   k.addEventListener('click',function(){
     var v=this.dataset.k;
-    if(v==='del'){
-      if(pin.length>0) pin=pin.slice(0,-1);
-      updateDots();return;
-    }
+    if(v==='del'){if(pin.length>0)pin=pin.slice(0,-1);updateDots();return;}
     if(pin.length>=2)return;
-    pin+=v;
-    updateDots();
-    if(pin.length===2) setTimeout(checkPin,180);
+    pin+=v;updateDots();
+    if(pin.length===2)setTimeout(checkPin,180);
   });
 });
-
 function updateDots(){
   document.getElementById('d0').classList.toggle('on',pin.length>0);
   document.getElementById('d1').classList.toggle('on',pin.length>1);
 }
-
 function checkPin(){
   if(pin===PIN){
     var lock=document.getElementById('lock');
     lock.classList.add('fade-out');
-    setTimeout(function(){
-      lock.style.display='none';
-      document.getElementById('role-screen').classList.add('show');
-    },650);
+    setTimeout(function(){lock.style.display='none';document.getElementById('role-screen').classList.add('show');},650);
   }else{
     var dots=document.getElementById('pinDots');
     dots.classList.add('shake');
@@ -550,31 +561,75 @@ function checkPin(){
   }
 }
 
-// ROLE
+// ══ ROLE ══
 var whoami='me';
 window.setRole=function(r){
   whoami=r;
   document.getElementById('role-screen').classList.remove('show');
   document.getElementById('app').classList.add('show');
+  if(r==='me'){
+    document.getElementById('chatAvatar').textContent='🌸';
+    document.getElementById('chatName').textContent='حبوبتي 🌸';
+  }else{
+    document.getElementById('chatAvatar').textContent='💙';
+    document.getElementById('chatName').textContent='حمودي 💙';
+  }
   initApp();
+  requestNotifPermission();
 };
 
-// NAV
+// ══ NAV ══
 window.goPage=function(name,btn){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active');});
   document.getElementById('page-'+name).classList.add('active');
   if(btn)btn.classList.add('active');
+  if(name==='msgs'){
+    document.getElementById('msgBadge').classList.remove('show');
+    document.getElementById('msgBadge').textContent='0';
+    unreadCount=0;
+    setTimeout(function(){var cb=document.getElementById('chatBody');cb.scrollTop=cb.scrollHeight;},100);
+  }
 };
 
-// COUNTER
+// ══ NOTIFICATIONS ══
+var unreadCount=0;
+var lastMsgTs=0;
+function requestNotifPermission(){
+  if('Notification' in window && Notification.permission==='default'){
+    Notification.requestPermission();
+  }
+}
+function showNotif(text,from){
+  // toast
+  var toast=document.getElementById('toast');
+  document.getElementById('toastIcon').textContent=from==='me'?'💙':'🌸';
+  document.getElementById('toastText').textContent=(from==='me'?'حمودي: ':'حبوبتي: ')+text;
+  toast.classList.add('show');
+  setTimeout(function(){toast.classList.remove('show');},4000);
+  // push notification
+  if('Notification' in window && Notification.permission==='granted'){
+    new Notification(from==='me'?'💙 حمودي':'🌸 حبوبتي',{
+      body:text,
+      icon:'https://emojicdn.elk.sh/❤️'
+    });
+  }
+  // badge
+  var currentPage=document.querySelector('.page.active');
+  if(!currentPage||currentPage.id!=='page-msgs'){
+    unreadCount++;
+    var badge=document.getElementById('msgBadge');
+    badge.textContent=unreadCount;
+    badge.classList.add('show');
+  }
+}
+
+// ══ COUNTER ══
 var START=new Date('2026-02-14T00:00:00');
 function updateCounter(){
   var now=new Date(),diff=now-START;if(diff<0)diff=0;
-  var d=Math.floor(diff/86400000);
-  var h=Math.floor((diff%86400000)/3600000);
-  var m=Math.floor((diff%3600000)/60000);
-  var s=Math.floor((diff%60000)/1000);
+  var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000);
+  var m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
   document.getElementById('cD').textContent=d;
   document.getElementById('cH').textContent=String(h).padStart(2,'0');
   document.getElementById('cM').textContent=String(m).padStart(2,'0');
@@ -582,17 +637,8 @@ function updateCounter(){
   document.getElementById('statDays').textContent=d;
 }
 
-// LOVE MSGS
-var msgs=[
-  '"إنتِ أجمل حاجة حصلتلي في حياتي 🌹"',
-  '"حبك مش حاجة بشعر بيها — ده حاجة بعيشها كل ثانية ❤️"',
-  '"من غيرك الدنيا مش بتبقى منطقية 💫"',
-  '"إنتِ بيتي اللي بيجي في بالي لما بحس بالتعب 🏠"',
-  '"ضحكتك بتخلي يومي يبقى تمام حتى لو كان صعب 😊"',
-  '"بحبك مش عشان محتاجك — بحتاجك عشان بحبك 💙"',
-  '"إنتِ الحاجة الوحيدة اللي عمري ما هتزهق منها 🌙"',
-  '"لو أقدر أختار تاني، هختارك أنتِ في كل مرة ✨"',
-];
+// ══ LOVE MSGS ══
+var msgs=['"إنتِ أجمل حاجة حصلتلي في حياتي 🌹"','"حبك مش حاجة بشعر بيها — ده حاجة بعيشها كل ثانية ❤️"','"من غيرك الدنيا مش بتبقى منطقية 💫"','"إنتِ بيتي اللي بيجي في بالي لما بحس بالتعب 🏠"','"ضحكتك بتخلي يومي يبقى تمام 😊"','"بحبك مش عشان محتاجك — بحتاجك عشان بحبك 💙"','"إنتِ الحاجة الوحيدة اللي عمري ما هتزهق منها 🌙"','"لو أقدر أختار تاني، هختارك أنتِ في كل مرة ✨"'];
 var msgIdx=0;
 window.nextMsg=function(){
   msgIdx=(msgIdx+1)%msgs.length;
@@ -612,25 +658,24 @@ function spawnHearts(el){
   });
 }
 
-// GALLERY
+// ══ GALLERY ══
 var CLOUD='dnj6i7q0u',PRESET='habobti';
 function loadGallery(){
-  window._onValue(window._ref('gallery'),function(snap){
+  R('gallery').on('value',function(snap){
     var data=snap.val();
     var grid=document.getElementById('galleryGrid');
     var btn=document.getElementById('uploadCard');
     Array.from(grid.querySelectorAll('.gallery-item')).forEach(function(el){el.remove();});
     if(!data)return;
-    Object.values(data).sort(function(a,b){return(a.ts||0)-(b.ts||0);}).forEach(function(p){addThumb(p.url,grid,btn);});
+    Object.values(data).sort(function(a,b){return(a.ts||0)-(b.ts||0);}).forEach(function(p){
+      var item=document.createElement('div');item.className='gallery-item';
+      var img=document.createElement('img');img.src=p.url;img.loading='lazy';
+      var ov=document.createElement('div');ov.className='gallery-item-overlay';ov.textContent='🔍';
+      item.appendChild(img);item.appendChild(ov);
+      item.onclick=function(){openLB(p.url);};
+      grid.insertBefore(item,btn);
+    });
   });
-}
-function addThumb(url,grid,btn){
-  var item=document.createElement('div');item.className='gallery-item';
-  var img=document.createElement('img');img.src=url;img.loading='lazy';
-  var ov=document.createElement('div');ov.className='gallery-item-overlay';ov.textContent='🔍';
-  item.appendChild(img);item.appendChild(ov);
-  item.onclick=function(){openLB(url);};
-  grid.insertBefore(item,btn);
 }
 window.uploadPhotos=function(e){
   var files=Array.from(e.target.files);if(!files.length)return;
@@ -641,27 +686,17 @@ window.uploadPhotos=function(e){
     fetch('https://api.cloudinary.com/v1_1/'+CLOUD+'/image/upload',{method:'POST',body:fd})
       .then(function(r){return r.json();})
       .then(function(d){
-        if(d.secure_url){
-          window._push(window._ref('gallery'),{url:d.secure_url,by:whoami,ts:Date.now()});
-          done++;
-        }
+        if(d.secure_url){R('gallery').push({url:d.secure_url,by:whoami,ts:Date.now()});done++;}
         if(i===files.length-1){st.textContent='✅ اتحفظت '+done+' صورة!';setTimeout(function(){st.textContent='';},3000);}
-      }).catch(function(){st.textContent='❌ في مشكلة، حاولي تاني';});
+      }).catch(function(){st.textContent='❌ في مشكلة';});
   });
   e.target.value='';
 };
 window.openLB=function(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');};
 window.closeLB=function(){document.getElementById('lightbox').classList.remove('open');};
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLB();closeGame();}});
 
-// SORRY
-var sorryItems=[
-  {text:'لما بكون مشغول ومش بديك وقتك 🕐',checked:false},
-  {text:'لما بتكلم بطريقة مش لايقة 😔',checked:false},
-  {text:'لما مش بسمعك صح وأنا مشتت 👂',checked:false},
-  {text:'لما بزعّلك وأنا أصلاً مش قاصد 💔',checked:false},
-  {text:'لما بخلّيكِ تحسي إنك لوحدك 🫂',checked:false},
-];
+// ══ SORRY ══
+var sorryItems=[{text:'لما بكون مشغول ومش بديك وقتك 🕐',checked:false},{text:'لما بتكلم بطريقة مش لايقة 😔',checked:false},{text:'لما مش بسمعك صح وأنا مشتت 👂',checked:false},{text:'لما بزعّلك وأنا أصلاً مش قاصد 💔',checked:false},{text:'لما بخلّيكِ تحسي إنك لوحدك 🫂',checked:false}];
 var sorryReplies=['وعد منك ده بيستاهل كل حاجة ❤️','بحبك يا حمودي، بس متعيدهاش 😤💕','طب ماشي، بسامحك بس مرة واحدة 😅','الله يسامحك 🌹 وأنا كمان بسامحك','يلا، اتقبل الاعتذار 🤍 بحبك برضو'];
 function renderSorry(){
   var list=document.getElementById('sorryList');list.innerHTML='';
@@ -686,95 +721,286 @@ window.sendSorry=function(){
   },idx*100);})(i);}
 };
 
-// MESSAGES
+// ══ MESSAGES - واتساب ستايل ══
+var msgsLoaded=false;
+function formatTime(ts){
+  var d=new Date(ts);
+  return d.getHours()+':'+(String(d.getMinutes()).padStart(2,'0'));
+}
+function formatDate(ts){
+  var d=new Date(ts);
+  var today=new Date();
+  var yesterday=new Date(today-86400000);
+  if(d.toDateString()===today.toDateString())return 'اليوم';
+  if(d.toDateString()===yesterday.toDateString())return 'أمس';
+  return d.toLocaleDateString('ar-EG');
+}
 function loadMsgs(){
-  window._onValue(window._ref('messages'),function(snap){
+  var initLoad=true;
+  R('messages').on('value',function(snap){
     var data=snap.val();
-    var list=document.getElementById('msgList');list.innerHTML='';
-    if(!data)return;
-    Object.values(data).sort(function(a,b){return(a.ts||0)-(b.ts||0);}).forEach(function(m){
-      var div=document.createElement('div');
-      div.className='msg-bubble '+(m.by==='me'?'me':'her');
-      div.innerHTML='<div>'+m.text+'</div><div class="msg-meta">'+(m.by==='me'?'حمودي 💙':'حبوبتي 🌸')+' • '+new Date(m.ts).toLocaleDateString('ar-EG')+'</div>';
-      list.appendChild(div);
+    var body=document.getElementById('chatBody');
+    body.innerHTML='';
+    if(!data){body.innerHTML='<div class="chat-empty">ابدأ المحادثة يا قمر 💌</div>';return;}
+    var items=Object.values(data).sort(function(a,b){return(a.ts||0)-(b.ts||0);});
+    var lastDate='';
+    items.forEach(function(m){
+      var mDate=formatDate(m.ts||0);
+      if(mDate!==lastDate){
+        var div=document.createElement('div');div.className='chat-date-divider';div.textContent=mDate;
+        body.appendChild(div);lastDate=mDate;
+      }
+      var row=document.createElement('div');
+      var isMe=m.by==='me';
+      row.className='msg-row '+(isMe?'me':'her');
+      var avEl=document.createElement('div');
+      avEl.className='msg-avatar-sm '+(isMe?'me-av':'her-av');
+      avEl.textContent=isMe?'💙':'🌸';
+      var bub=document.createElement('div');
+      bub.className='bubble '+(isMe?'me':'her');
+      bub.innerHTML='<div>'+m.text+'</div><div class="bubble-time">'+(isMe?'<span class="bubble-tick">✓✓</span>':'')+formatTime(m.ts||0)+'</div>';
+      row.appendChild(avEl);row.appendChild(bub);
+      body.appendChild(row);
+      // إشعار للرسائل الجديدة
+      if(!initLoad && m.ts>lastMsgTs && m.by!==whoami){
+        showNotif(m.text,m.by);
+      }
+      if(m.ts>lastMsgTs)lastMsgTs=m.ts;
     });
+    body.scrollTop=body.scrollHeight;
+    initLoad=false;
   });
 }
 window.sendMsg=function(){
   var inp=document.getElementById('msgInput');
   var txt=inp.value.trim();if(!txt)return;
-  window._push(window._ref('messages'),{text:txt,by:whoami,ts:Date.now()});
-  inp.value='';
+  R('messages').push({text:txt,by:whoami,ts:Date.now()});
+  inp.value='';inp.style.height='42px';
+};
+window.msgKeydown=function(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}
+  var inp=e.target;inp.style.height='42px';inp.style.height=Math.min(inp.scrollHeight,100)+'px';
 };
 
-// PROMISES
-var defaultPromises=[
-  {text:'نسافر مع بعض 🌍',done:false},
-  {text:'نفضل مع بعض دايماً 💑',done:false},
-  {text:'مش نزعل من بعض كتير 🕊️',done:false},
-  {text:'نحتفل بذكرى سنوية 🥂',done:false},
-  {text:'نتعلم حاجة جديدة مع بعض 📚',done:false},
-];
-function loadPromises(){
-  window._onValue(window._ref('promises'),function(snap){
-    var data=snap.val();
-    if(!data){
-      defaultPromises.forEach(function(p){window._push(window._ref('promises'),p);});
-      return;
-    }
-    renderPromises(data);
+// ══ MUSIC - البوماتي ══
+var playlist=[];
+var currentIdx=-1;
+var isPlaying=false;
+var favTrack=null;
+
+// جلب نتائج من البوماتي عبر البحث
+window.searchMusic=function(){
+  var q=document.getElementById('musicSearchInput').value.trim();
+  if(!q)return;
+  var st=document.getElementById('musicStatus');
+  var res=document.getElementById('musicResults');
+  st.textContent='جاري البحث...';
+  res.innerHTML='';
+  // البحث عبر RSS/API البوماتي
+  var url='https://www.albumaty.com/search.php?q='+encodeURIComponent(q);
+  fetch('https://api.allorigins.win/get?url='+encodeURIComponent(url))
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var parser=new DOMParser();
+      var doc=parser.parseFromString(d.contents,'text/html');
+      // استخراج نتائج الأغاني
+      var links=doc.querySelectorAll('a[href*="/song/"]');
+      var results=[];
+      links.forEach(function(a){
+        var title=a.textContent.trim();
+        var href=a.getAttribute('href');
+        if(title&&href&&title.length>2&&results.length<10){
+          var fullUrl=href.startsWith('http')?href:'https://www.albumaty.com'+href;
+          // تجنب التكرار
+          if(!results.find(function(r){return r.url===fullUrl;})){
+            results.push({title:title,url:fullUrl});
+          }
+        }
+      });
+      if(!results.length){st.textContent='مفيش نتايج، جرب كلمة تانية';return;}
+      st.textContent='اتوجدت '+results.length+' نتيجة — اضغط على الأغنية للتشغيل';
+      playlist=results;
+      results.forEach(function(item,i){
+        var div=document.createElement('div');
+        div.className='music-result-item';
+        div.innerHTML='<div class="mri-icon">🎵</div><div class="mri-info"><div class="mri-title">'+item.title+'</div><div class="mri-artist">البوماتي</div></div><div class="mri-actions"><button class="mri-btn" onclick="playFromSearch('+i+');event.stopPropagation()">▶ شغّل</button><button class="mri-btn" onclick="openAlbumaty(\''+item.url+'\');event.stopPropagation()">🔗 البوماتي</button></div>';
+        div.onclick=function(){playFromSearch(i);};
+        res.appendChild(div);
+      });
+    })
+    .catch(function(){
+      st.textContent='في مشكلة في البحث، افتح البوماتي مباشرة 👇';
+      res.innerHTML='<div style="text-align:center;padding:1rem"><a href="https://www.albumaty.com/search.php?q='+encodeURIComponent(q)+'" target="_blank" style="color:var(--violet-light);text-decoration:none;font-size:.9rem">🔗 ابحث على البوماتي مباشرة</a></div>';
+    });
+};
+
+window.openAlbumaty=function(url){
+  window.open(url,'_blank');
+};
+
+// تشغيل أغنية من نتائج البحث
+window.playFromSearch=function(idx){
+  currentIdx=idx;
+  var item=playlist[idx];
+  // فتح صفحة الأغنية لجلب رابط الـ MP3
+  document.getElementById('musicStatus').textContent='جاري تحميل الأغنية...';
+  document.querySelectorAll('.music-result-item').forEach(function(el,i){
+    el.classList.toggle('playing',i===idx);
+  });
+  fetch('https://api.allorigins.win/get?url='+encodeURIComponent(item.url))
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var parser=new DOMParser();
+      var doc=parser.parseFromString(d.contents,'text/html');
+      // ابحث عن رابط MP3
+      var mp3Link=null;
+      var sources=doc.querySelectorAll('source[src], audio[src], a[href$=".mp3"]');
+      sources.forEach(function(s){
+        var src=s.getAttribute('src')||s.getAttribute('href');
+        if(src&&src.includes('.mp3')&&!mp3Link)mp3Link=src;
+      });
+      if(!mp3Link){
+        // بحث في الـ HTML نص عن mp3
+        var html=d.contents;
+        var match=html.match(/https?:\/\/[^"'\s]+\.mp3/);
+        if(match)mp3Link=match[0];
+      }
+      if(mp3Link){
+        loadAndPlay(mp3Link,item.title,'البوماتي');
+        document.getElementById('musicStatus').textContent='';
+      }else{
+        document.getElementById('musicStatus').textContent='مش قادر يشغّل أوتوماتيك — افتح البوماتي مباشرة';
+        window.open(item.url,'_blank');
+      }
+    })
+    .catch(function(){
+      document.getElementById('musicStatus').textContent='افتح البوماتي مباشرة 🎵';
+      window.open(item.url,'_blank');
+    });
+};
+
+function loadAndPlay(src,title,artist){
+  var audio=document.getElementById('mainAudio');
+  audio.src=src;
+  audio.volume=parseFloat(document.getElementById('volSlider').value);
+  audio.play().then(function(){
+    isPlaying=true;
+    document.getElementById('playerPlayBtn').textContent='⏸';
+    document.getElementById('playerTitle').textContent=title||'أغنية';
+    document.getElementById('playerArtist').textContent=artist||'البوماتي';
+    document.getElementById('bottomPlayer').classList.add('show');
+    updateFavBtn();
+  }).catch(function(){
+    document.getElementById('musicStatus').textContent='مش قادر يشغّل — جرب افتح البوماتي مباشرة';
   });
 }
-function renderPromises(data){
-  var list=document.getElementById('promiseList');list.innerHTML='';
-  var items=Object.entries(data);
-  var done=items.filter(function(x){return x[1].done;}).length;
-  var pct=Math.round(done/items.length*100);
-  document.getElementById('promiseBar').style.width=pct+'%';
-  document.getElementById('promisePct').textContent=pct+'% من وعودنا اتحققت ❤️';
-  items.forEach(function(entry){
-    var key=entry[0],p=entry[1];
-    var div=document.createElement('div');div.className='promise-item'+(p.done?' done':'');
-    div.innerHTML='<div class="promise-check">'+(p.done?'✓':'')+'</div><div class="promise-text">'+p.text+'</div>';
-    div.onclick=function(){window._update(window._ref('promises/'+key),{done:!p.done});};
-    list.appendChild(div);
+
+window.togglePlay=function(){
+  var audio=document.getElementById('mainAudio');
+  if(isPlaying){audio.pause();document.getElementById('playerPlayBtn').textContent='▶';}
+  else{audio.play();document.getElementById('playerPlayBtn').textContent='⏸';}
+  isPlaying=!isPlaying;
+};
+window.prevTrack=function(){
+  if(currentIdx>0){currentIdx--;playFromSearch(currentIdx);}
+};
+window.nextTrack=function(){
+  if(currentIdx<playlist.length-1){currentIdx++;playFromSearch(currentIdx);}
+};
+window.toggleFav=function(){
+  if(currentIdx<0||!playlist[currentIdx])return;
+  favTrack=playlist[currentIdx];
+  // حفظ في Firebase
+  R('favTrack').set({title:favTrack.title,url:favTrack.url,ts:Date.now()});
+  document.getElementById('favBtn').textContent='★';
+  document.getElementById('favBtn').style.color='var(--gold-light)';
+  showToast('⭐ اتحفظت كأغنية مفضلة!');
+};
+function updateFavBtn(){
+  if(!favTrack||!playlist[currentIdx])return;
+  var isFav=favTrack.url===playlist[currentIdx].url;
+  document.getElementById('favBtn').textContent=isFav?'★':'☆';
+  document.getElementById('favBtn').style.color=isFav?'var(--gold-light)':'';
+}
+function loadFavTrack(){
+  R('favTrack').on('value',function(snap){
+    var d=snap.val();
+    if(!d)return;
+    favTrack=d;
+    var sec=document.getElementById('favSection');
+    var favEl=document.getElementById('favTrack');
+    sec.style.display='block';
+    favEl.innerHTML='<div class="music-result-item" onclick="playFav()"><div class="mri-icon">⭐</div><div class="mri-info"><div class="mri-title">'+d.title+'</div><div class="mri-artist">أغنيتنا المفضلة</div></div><div class="mri-actions"><button class="mri-btn fav" onclick="playFav();event.stopPropagation()">▶ شغّل</button></div></div>';
+  });
+}
+window.playFav=function(){
+  if(!favTrack)return;
+  playlist=[favTrack];currentIdx=0;
+  playFromSearch(0);
+};
+
+// progress bar
+var audio=document.getElementById('mainAudio');
+audio.addEventListener('timeupdate',function(){
+  if(!audio.duration)return;
+  var pct=(audio.currentTime/audio.duration*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('timeCurrent').textContent=fmtTime(audio.currentTime);
+  document.getElementById('timeDuration').textContent=fmtTime(audio.duration);
+});
+audio.addEventListener('ended',function(){nextTrack();});
+function fmtTime(s){
+  var m=Math.floor(s/60);return m+':'+(String(Math.floor(s%60)).padStart(2,'0'));
+}
+window.seekAudio=function(e){
+  if(!audio.duration)return;
+  var bar=e.currentTarget;var rect=bar.getBoundingClientRect();
+  var pct=(e.clientX-rect.left)/rect.width;
+  audio.currentTime=pct*audio.duration;
+};
+window.setVol=function(v){audio.volume=parseFloat(v);};
+
+function showToast(msg){
+  var toast=document.getElementById('toast');
+  document.getElementById('toastIcon').textContent='✨';
+  document.getElementById('toastText').textContent=msg;
+  toast.classList.add('show');
+  setTimeout(function(){toast.classList.remove('show');},3000);
+}
+
+// ══ PROMISES ══
+var defaultPromises=[{text:'نسافر مع بعض 🌍',done:false},{text:'نفضل مع بعض دايماً 💑',done:false},{text:'مش نزعل من بعض كتير 🕊️',done:false},{text:'نحتفل بذكرى سنوية 🥂',done:false},{text:'نتعلم حاجة جديدة مع بعض 📚',done:false}];
+function loadPromises(){
+  R('promises').on('value',function(snap){
+    var data=snap.val();
+    if(!data){defaultPromises.forEach(function(p){R('promises').push(p);});return;}
+    var list=document.getElementById('promiseList');list.innerHTML='';
+    var items=Object.entries(data);
+    var done=items.filter(function(x){return x[1].done;}).length;
+    var pct=Math.round(done/items.length*100);
+    document.getElementById('promiseBar').style.width=pct+'%';
+    document.getElementById('promisePct').textContent=pct+'% من وعودنا اتحققت ❤️';
+    items.forEach(function(entry){
+      var key=entry[0],p=entry[1];
+      var div=document.createElement('div');div.className='promise-item'+(p.done?' done':'');
+      div.innerHTML='<div class="promise-check">'+(p.done?'✓':'')+'</div><div class="promise-text">'+p.text+'</div>';
+      div.onclick=function(){R('promises/'+key).update({done:!p.done});};
+      list.appendChild(div);
+    });
   });
 }
 window.addPromise=function(){
   var txt=prompt('اكتب الوعد الجديد:');
   if(!txt)return;
-  window._push(window._ref('promises'),{text:txt,done:false});
+  R('promises').push({text:txt,done:false});
 };
 
-// GAMES
-var todTruths=[
-  'إيه أول حاجة لفت نظرك فيّ؟',
-  'إيه أكتر لحظة بتتذكرها معايا؟',
-  'لو تقدر تغير حاجة في شخصيتي، هتغير إيه؟',
-  'إيه أكتر حاجة بتحبها فيّ؟',
-  'بتحبني قد إيه من ١ لـ ١٠؟',
-  'إيه حلمك اللي عايز نعمله مع بعض؟',
-  'إيه أحلى يوم عشته معايا؟',
-  'بتفتكرنا مع بعض بعد ١٠ سنين؟',
-];
-var todDares=[
-  'ابعتلي أحلى صورة في تليفونك 📸',
-  'قولي ٣ حاجات بتحبها فيّا 💕',
-  'قولي جملة حب بصوتك 🎤',
-  'اعملي دنسة وابعتهالي فيديو 💃',
-  'اكتبلي أجمل رسالة حب ممكنة 💌',
-  'سمّيلي بالاسم الحلو اللي بتناديني بيه 🥰',
-];
-var quizQs=[
-  {q:'إيه لون عينيّا؟',opts:['بني','أسود','أخضر','أزرق'],ans:0},
-  {q:'إيه أكل أكتر بحبه؟',opts:['بيتزا','كشري','مكرونة','كبدة'],ans:2},
-  {q:'إيه موسيقاي المفضلة؟',opts:['راب','شعبي','طرب','بوب'],ans:0},
-  {q:'إيه هوايتي؟',opts:['رسم','موسيقى','سينما','رياضة'],ans:2},
-  {q:'إيه الدراما اللي بحبها؟',opts:['أكشن','رومانسي','كوميدي','رعب'],ans:1},
-];
+// ══ GAMES ══
+var todTruths=['إيه أول حاجة لفت نظرك فيّ؟','إيه أكتر لحظة بتتذكرها معايا؟','لو تقدر تغير حاجة في شخصيتي، هتغير إيه؟','إيه أكتر حاجة بتحبها فيّ؟','بتحبني قد إيه من ١ لـ ١٠؟','إيه حلمك اللي عايز نعمله مع بعض؟','إيه أحلى يوم عشته معايا؟','بتفتكرنا مع بعض بعد ١٠ سنين؟'];
+var todDares=['ابعتلي أحلى صورة في تليفونك 📸','قولي ٣ حاجات بتحبها فيّا 💕','قولي جملة حب بصوتك 🎤','اعملي دنسة وابعتهالي فيديو 💃','اكتبلي أجمل رسالة حب ممكنة 💌','سمّيلي بالاسم الحلو اللي بتناديني بيه 🥰'];
+var quizQs=[{q:'إيه لون عينيّا؟',opts:['بني','أسود','أخضر','أزرق'],ans:0},{q:'إيه أكل أكتر بحبه؟',opts:['بيتزا','كشري','مكرونة','كبدة'],ans:2},{q:'إيه موسيقاي المفضلة؟',opts:['راب','شعبي','طرب','بوب'],ans:0},{q:'إيه هوايتي؟',opts:['رسم','موسيقى','سينما','رياضة'],ans:2},{q:'إيه الدراما اللي بحبها؟',opts:['أكشن','رومانسي','كوميدي','رعب'],ans:1}];
 var rouletteItems=['بوسة 😘','احضان كبير 🤗','رسالة حب 💌','غنيلي 🎵','ارسملي 🎨','خدني في جولة 🚶','عملي مفاجأة 🎁'];
 var quizIdx=0,quizScore=0;
-
 window.openGame=function(game){
   document.getElementById('gameModal').classList.add('open');
   if(game==='tod')renderTOD();
@@ -783,40 +1009,21 @@ window.openGame=function(game){
   else if(game==='meter')renderMeter();
 };
 window.closeGame=function(){document.getElementById('gameModal').classList.remove('open');};
-
 function renderTOD(){
   document.getElementById('gameTitle').textContent='Truth or Dare 🎯';
-  document.getElementById('gameContent').innerHTML=`
-    <div class="game-card-flip" onclick="flipCard()">
-      <div class="game-card-inner" id="flipCard">
-        <div class="card-face card-front">🃏</div>
-        <div class="card-face card-back"><span id="cardBackText">اختار Truth أو Dare</span></div>
-      </div>
-    </div>`;
+  document.getElementById('gameContent').innerHTML='<div class="game-card-flip" onclick="flipCard()"><div class="game-card-inner" id="flipCard"><div class="card-face card-front">🃏</div><div class="card-face card-back"><span id="cardBackText">اختار Truth أو Dare</span></div></div></div>';
   document.getElementById('gameBtns').innerHTML='';
   var t=document.createElement('button');t.className='game-btn';t.textContent='Truth 💭';
-  t.onclick=function(){
-    var text=todTruths[Math.floor(Math.random()*todTruths.length)];
-    document.getElementById('cardBackText').textContent=text;
-    document.getElementById('flipCard').classList.remove('flipped');
-    setTimeout(function(){document.getElementById('flipCard').classList.add('flipped');},50);
-  };
+  t.onclick=function(){var text=todTruths[Math.floor(Math.random()*todTruths.length)];document.getElementById('cardBackText').textContent=text;document.getElementById('flipCard').classList.remove('flipped');setTimeout(function(){document.getElementById('flipCard').classList.add('flipped');},50);};
   var d=document.createElement('button');d.className='game-btn';d.textContent='Dare 🔥';
-  d.onclick=function(){
-    var text=todDares[Math.floor(Math.random()*todDares.length)];
-    document.getElementById('cardBackText').textContent=text;
-    document.getElementById('flipCard').classList.remove('flipped');
-    setTimeout(function(){document.getElementById('flipCard').classList.add('flipped');},50);
-  };
-  document.getElementById('gameBtns').appendChild(t);
-  document.getElementById('gameBtns').appendChild(d);
+  d.onclick=function(){var text=todDares[Math.floor(Math.random()*todDares.length)];document.getElementById('cardBackText').textContent=text;document.getElementById('flipCard').classList.remove('flipped');setTimeout(function(){document.getElementById('flipCard').classList.add('flipped');},50);};
+  document.getElementById('gameBtns').appendChild(t);document.getElementById('gameBtns').appendChild(d);
 }
 window.flipCard=function(){document.getElementById('flipCard').classList.toggle('flipped');};
-
 function showQuizQ(){
   if(quizIdx>=quizQs.length){
     document.getElementById('gameTitle').textContent='النتيجة 🏆';
-    document.getElementById('gameContent').innerHTML='<div class="love-score">'+quizScore+'/'+quizQs.length+'</div><div style="font-family:Amiri,serif;font-size:1rem;color:var(--muted);margin:.5rem 0">'+getQuizMsg()+'</div><div class="love-meter"><div class="love-meter-fill" style="width:'+(quizScore/quizQs.length*100)+'%"></div></div>';
+    document.getElementById('gameContent').innerHTML='<div class="love-score">'+quizScore+'/'+quizQs.length+'</div><div style="font-family:Amiri,serif;color:var(--muted);margin:.5rem 0">'+(quizScore===quizQs.length?'ماشاء الله، عارفني زي ما بعرف نفسي 💕':quizScore>=3?'كويس بس في حاجات لازم تعرفها أكتر 😊':'لازم تقعد معايا وتعرفني أحسن 😄')+'</div><div class="love-meter"><div class="love-meter-fill" style="width:'+(quizScore/quizQs.length*100)+'%"></div></div>';
     document.getElementById('gameBtns').innerHTML='<button class="game-btn" onclick="quizIdx=0;quizScore=0;showQuizQ()">العب تاني 🔄</button>';
     return;
   }
@@ -826,40 +1033,23 @@ function showQuizQ(){
   document.getElementById('gameBtns').innerHTML='';
 }
 window.answerQ=function(i){
-  var q=quizQs[quizIdx];
-  var opts=document.querySelectorAll('.quiz-opt');
+  var q=quizQs[quizIdx];var opts=document.querySelectorAll('.quiz-opt');
   opts[i].classList.add(i===q.ans?'correct':'wrong');
   if(i===q.ans){quizScore++;opts[i].textContent='✅ '+opts[i].textContent;}
   else{opts[i].textContent='❌ '+opts[i].textContent;opts[q.ans].classList.add('correct');}
   opts.forEach(function(o){o.style.pointerEvents='none';});
   setTimeout(function(){quizIdx++;showQuizQ();},1200);
 };
-function getQuizMsg(){
-  if(quizScore===quizQs.length)return 'ماشاء الله، عارفني زي ما بعرف نفسي 💕';
-  if(quizScore>=3)return 'كويس بس في حاجات لازم تعرفها أكتر 😊';
-  return 'لازم تقعد معايا وتعرفني أحسن 😄';
-}
-
 function renderRoulette(){
   document.getElementById('gameTitle').textContent='روليت الحب 🎡';
-  document.getElementById('gameContent').innerHTML='<span class="roulette-wheel" id="rouletteEmoji" style="font-size:5rem;display:block">🎡</span><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--cream);margin-top:1rem;min-height:2rem" id="rouletteResult">اضغط الزرار!</div>';
+  document.getElementById('gameContent').innerHTML='<span id="rouletteEmoji" style="font-size:5rem;display:block">🎡</span><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--cream);margin-top:1rem;min-height:2rem" id="rouletteResult">اضغط الزرار!</div>';
   document.getElementById('gameBtns').innerHTML='<button class="game-btn" onclick="spinRoulette()">لفّ 🎰</button>';
 }
 window.spinRoulette=function(){
-  var em=document.getElementById('rouletteEmoji');
-  var res=document.getElementById('rouletteResult');
-  var count=0;
-  var emojis=['🎡','🎠','🎢','🌀'];
-  var timer=setInterval(function(){
-    em.textContent=emojis[count%emojis.length];count++;
-    if(count>15){
-      clearInterval(timer);
-      em.textContent='🎉';
-      res.textContent=rouletteItems[Math.floor(Math.random()*rouletteItems.length)];
-    }
-  },120);
+  var em=document.getElementById('rouletteEmoji');var res=document.getElementById('rouletteResult');
+  var count=0;var emojis=['🎡','🎠','🎢','🌀'];
+  var timer=setInterval(function(){em.textContent=emojis[count%emojis.length];count++;if(count>15){clearInterval(timer);em.textContent='🎉';res.textContent=rouletteItems[Math.floor(Math.random()*rouletteItems.length)];}},120);
 };
-
 function renderMeter(){
   document.getElementById('gameTitle').textContent='عداد الحب 💘';
   document.getElementById('gameContent').innerHTML='<div style="font-family:Amiri,serif;font-size:.9rem;color:var(--muted);margin-bottom:1rem">دوس على الزرار وشوف</div><div class="love-meter"><div class="love-meter-fill" id="lMeter" style="width:0%"></div></div><div class="love-score" id="lScore">0%</div><div style="font-family:Amiri,serif;font-size:.9rem;color:var(--gold-light);min-height:1.5rem" id="lMsg"></div>';
@@ -869,38 +1059,25 @@ window.measureLove=function(){
   var pct=Math.floor(Math.random()*30+70);
   document.getElementById('lMeter').style.width=pct+'%';
   document.getElementById('lScore').textContent=pct+'%';
-  var msgs=['أكيد في حب كتير هنا 💕','مستوى الحب عالي جداً ❤️‍🔥','قلبك مليان بيها 🌹','الحب ده حقيقي 💙'];
-  document.getElementById('lMsg').textContent=msgs[Math.floor(Math.random()*msgs.length)];
+  var ms=['أكيد في حب كتير هنا 💕','مستوى الحب عالي جداً ❤️‍🔥','قلبك مليان بيها 🌹','الحب ده حقيقي 💙'];
+  document.getElementById('lMsg').textContent=ms[Math.floor(Math.random()*ms.length)];
 };
 
-// MUSIC
-var playing=false;
-window.toggleMusic=function(){
-  var audio=document.getElementById('audio');
-  var btn=document.getElementById('musicBtn');
-  var bars=document.querySelectorAll('.bar');
-  if(playing){audio.pause();btn.textContent='▶';bars.forEach(function(b){b.classList.add('stopped');});}
-  else{audio.play().catch(function(){});btn.textContent='⏸';bars.forEach(function(b){b.classList.remove('stopped');});}
-  playing=!playing;
-};
-
-// FLOATING HEARTS
+// ══ FLOATING HEARTS ══
 document.getElementById('app').addEventListener('click',function(e){
-  if(e.target.closest('.music-player')||e.target.closest('nav')||e.target.closest('.gallery-item')||e.target.closest('.upload-card')||e.target.closest('.love-card')||e.target.closest('#lightbox')||e.target.closest('.game-modal'))return;
+  if(e.target.closest('.music-player,.bottom-player,nav,.gallery-item,.upload-card,.love-card,#lightbox,.game-modal,.chat-footer'))return;
   var h=document.createElement('div');h.className='fheart';
   h.textContent=['❤️','💕','🌹','💫'][Math.floor(Math.random()*4)];
   h.style.left=(e.clientX-12)+'px';h.style.top=(e.clientY-12)+'px';
   document.body.appendChild(h);setTimeout(function(){h.remove();},1100);
 });
 
-// INIT
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLB();closeGame();}});
+
+// ══ INIT ══
 function initApp(){
-  updateCounter();
-  setInterval(updateCounter,1000);
-  renderSorry();
-  loadGallery();
-  loadMsgs();
-  loadPromises();
+  updateCounter();setInterval(updateCounter,1000);
+  renderSorry();loadGallery();loadMsgs();loadPromises();loadFavTrack();
 }
 </script>
 </body>
