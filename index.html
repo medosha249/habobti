@@ -721,9 +721,9 @@ nav{
 </div>
 <audio id="audio" loop src="music.mp3"></audio>
 
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-<script>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import{getDatabase,ref,set,get,onValue,push,remove,update}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 const cfg={
   apiKey:"AIzaSyDOxflWMXRninoAJ6DH2CVUR4dNCgzCArs",
   authDomain:"habobti-727fd.firebaseapp.com",
@@ -733,19 +733,15 @@ const cfg={
   messagingSenderId:"969867541051",
   appId:"1:969867541051:web:72f55ea9f78d23d6cdfa1e"
 };
-firebase.initializeApp(cfg);
-const db=firebase.database();
-window._db=db;
-window._ref=function(path){return db.ref(path);};
-window._set=function(r,v){return r.set(v);};
-window._get=function(r){return r.get();};
-window._onValue=function(r,cb){return r.on('value',cb);};
-window._push=function(r,v){return r.push(v);};
-window._remove=function(r){return r.remove();};
-window._update=function(r,v){return r.update(v);};
+const app=initializeApp(cfg);
+const db=getDatabase(app);
+window._db=db;window._ref=ref;window._set=set;
+window._get=get;window._onValue=onValue;
+window._push=push;window._remove=remove;window._update=update;
 window._fbOK=true;
-console.log("Firebase ✅");
 </script>
+
+<script>
 // STARS
 (function(){
   var s=document.getElementById('stars');
