@@ -15,8 +15,6 @@
 }
 body{background:var(--dark);color:var(--cream);font-family:'Tajawal',sans-serif;overflow-x:hidden;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(124,58,237,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(230,57,80,0.14) 0%,transparent 55%);pointer-events:none}
-
-/* LOCK */
 #lock{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center}
 .lock-glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:32px;padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.8rem;width:100%;max-width:320px;backdrop-filter:blur(20px)}
 .lock-emoji{font-size:3rem;animation:pulse 2s ease-in-out infinite}
@@ -38,20 +36,14 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradi
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 #lock.fade-out{animation:fadeOut .7s ease forwards}
 @keyframes fadeOut{to{opacity:0;pointer-events:none}}
-
-/* ROLE */
 #role-screen{position:fixed;inset:0;z-index:9998;background:var(--dark);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
 #role-screen.show{display:flex}
 .role-title{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--gold-light),var(--violet-light));-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
 .role-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
 .role-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:1.1rem 2.5rem;font-family:'Tajawal',sans-serif;font-size:1.1rem;color:var(--cream);cursor:pointer;transition:all .3s}
 .role-btn:hover{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.5);transform:translateY(-3px)}
-
-/* APP */
 #app{display:none;flex-direction:column;min-height:100vh;position:relative;z-index:1}
 #app.show{display:flex}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.2rem;background:rgba(8,6,22,0.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
 .nav-logo{font-family:'Amiri',serif;font-size:1.25rem;background:linear-gradient(90deg,var(--gold-light),var(--rose-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-links{display:flex;gap:.25rem;overflow-x:auto}
@@ -60,12 +52,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-link.active{background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(230,57,80,0.15));border:1px solid rgba(124,58,237,0.2)}
 .nav-badge{position:absolute;top:2px;right:2px;background:var(--rose);color:white;border-radius:50%;width:16px;height:16px;font-size:.6rem;display:none;align-items:center;justify-content:center}
 .nav-badge.show{display:flex}
-
-/* PAGES */
 .page{display:none;padding-top:62px;min-height:100vh}
 .page.active{display:block}
-
-/* HOME */
 #page-home{display:none;padding:70px 1rem 3rem;flex-direction:column;align-items:center;gap:1.2rem}
 #page-home.active{display:flex}
 .bento{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;width:100%;max-width:520px}
@@ -88,13 +76,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .love-card-hint{font-size:.65rem;color:var(--muted);margin-top:.6rem}
 .stat-num{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--violet-light),var(--blue-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat-label{font-size:.75rem;color:var(--muted);margin-top:.2rem}
-
-/* PAGE HEADER */
 .page-header{text-align:center;padding:2rem 0 1.5rem}
 .page-header h2{font-family:'Amiri',serif;font-size:2rem;background:linear-gradient(135deg,var(--gold-light),var(--rose-light));-webkit-background-clip:text;background-clip:text;color:transparent}
 .page-header p{font-size:.85rem;color:var(--muted);margin-top:.3rem}
-
-/* GALLERY */
 #page-gallery{padding:62px 1rem 3rem}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem;max-width:900px;margin:0 auto}
 .gallery-item{aspect-ratio:1;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--glass-border);transition:transform .3s}
@@ -112,8 +96,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 #lightbox.open{display:flex}
 #lightbox img{max-width:92vw;max-height:88vh;border-radius:16px}
 .lb-close{position:absolute;top:1rem;right:1rem;background:rgba(230,57,80,0.4);border:none;color:white;width:38px;height:38px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
-
-/* SORRY */
 #page-sorry{display:none;padding:70px 1rem 3rem;align-items:center;justify-content:center;flex-direction:column;min-height:100vh;gap:1.5rem}
 #page-sorry.active{display:flex}
 .sorry-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:28px;padding:2rem 1.5rem;max-width:440px;width:100%;backdrop-filter:blur(12px)}
@@ -126,10 +108,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .sorry-reason.checked{background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.3)}
 .sorry-cta{background:linear-gradient(135deg,var(--rose),#a02035);border:none;border-radius:16px;padding:.9rem;color:white;font-family:'Tajawal',sans-serif;font-size:1rem;cursor:pointer;transition:all .3s;width:100%;margin-top:1rem}
 .sorry-reply{font-family:'Amiri',serif;font-size:.95rem;color:var(--gold-light);margin-top:1rem;min-height:1.5rem;transition:all .3s}
-
-/* ══════════════════════════════════
-   MESSAGES - واتساب ستايل
-══════════════════════════════════ */
 #page-msgs{padding:62px 0 0;display:none;flex-direction:column;height:100vh}
 #page-msgs.active{display:flex}
 .chat-header{padding:.8rem 1rem;background:rgba(8,6,22,0.9);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:.8rem;flex-shrink:0}
@@ -141,60 +119,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .chat-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px}
 .msg-row{display:flex;align-items:flex-end;gap:.5rem}
 .msg-row.me{flex-direction:row-reverse}
-.msg-row.her{flex-direction:row}
 .msg-avatar-sm{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem}
 .msg-avatar-sm.me-av{background:linear-gradient(135deg,var(--violet),var(--blue))}
 .msg-avatar-sm.her-av{background:linear-gradient(135deg,var(--rose),#f472b6)}
-.bubble{max-width:72%;padding:.65rem .9rem;border-radius:18px;font-family:'Amiri',serif;font-size:.95rem;line-height:1.7;position:relative;word-break:break-word}
+.bubble{max-width:72%;padding:.65rem .9rem;border-radius:18px;font-family:'Amiri',serif;font-size:.95rem;line-height:1.7;word-break:break-word}
 .bubble.me{background:linear-gradient(135deg,rgba(124,58,237,0.35),rgba(37,99,235,0.25));border:1px solid rgba(124,58,237,0.25);border-radius:18px 18px 4px 18px}
 .bubble.her{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px 18px 18px 4px}
 .bubble-time{font-size:.6rem;color:var(--muted);margin-top:.3rem;text-align:left;direction:ltr}
 .bubble.me .bubble-time{text-align:right}
 .bubble-tick{font-size:.65rem;margin-right:.2rem}
-.chat-date-divider{text-align:center;font-size:.7rem;color:var(--muted);margin:.5rem 0;background:rgba(255,255,255,0.04);border-radius:20px;padding:.25rem .8rem;display:inline-block;align-self:center}
+.chat-date-divider{text-align:center;font-size:.7rem;color:var(--muted);margin:.5rem 0;background:rgba(255,255,255,0.04);border-radius:20px;padding:.25rem .8rem;align-self:center}
 .chat-footer{padding:.6rem .8rem;background:rgba(8,6,22,0.9);border-top:1px solid var(--glass-border);display:flex;align-items:center;gap:.6rem;flex-shrink:0}
 .chat-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:.65rem 1rem;color:var(--cream);font-family:'Amiri',serif;font-size:.95rem;outline:none;resize:none;max-height:100px;min-height:42px}
 .chat-input:focus{border-color:rgba(124,58,237,0.4)}
 .chat-send{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:50%;width:42px;height:42px;color:white;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
 .chat-send:hover{transform:scale(1.1)}
 .chat-empty{text-align:center;color:var(--muted);font-family:'Amiri',serif;font-size:.9rem;margin:auto;padding:2rem}
-
-/* ══════════════════════════════════
-   MUSIC PAGE - البوماتي
-══════════════════════════════════ */
-#page-music{padding:62px 1rem 140px;display:none}
+#page-music{padding:62px 1rem 3rem;display:none}
 #page-music.active{display:block}
-.music-search-wrap{max-width:540px;margin:0 auto}
-.music-search-box{display:flex;gap:.6rem;margin-bottom:1.2rem}
-.music-search-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:.75rem 1rem;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:.95rem;outline:none}
-.music-search-input:focus{border-color:rgba(124,58,237,0.4)}
-.music-search-btn{background:linear-gradient(135deg,var(--violet),var(--rose));border:none;border-radius:14px;padding:.75rem 1.2rem;color:white;font-family:'Tajawal',sans-serif;font-size:.9rem;cursor:pointer;white-space:nowrap}
-.music-results{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
-.music-result-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:.9rem 1rem;display:flex;align-items:center;gap:.9rem;cursor:pointer;transition:all .25s}
+.music-fav-section{margin-top:1rem}
+.music-fav-title{font-size:.75rem;letter-spacing:3px;color:var(--gold-light);opacity:.7;margin-bottom:.8rem}
+.music-result-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:.9rem 1rem;display:flex;align-items:center;gap:.9rem;cursor:pointer;transition:all .25s;margin-bottom:.6rem}
 .music-result-item:hover{border-color:rgba(124,58,237,0.4);background:rgba(124,58,237,0.08)}
-.music-result-item.playing{border-color:rgba(230,57,80,0.5);background:rgba(230,57,80,0.08)}
 .mri-icon{font-size:1.5rem;flex-shrink:0}
 .mri-info{flex:1;min-width:0}
 .mri-title{font-size:.9rem;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mri-artist{font-size:.75rem;color:var(--muted)}
-.mri-actions{display:flex;gap:.5rem;flex-shrink:0}
 .mri-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:.3rem .6rem;color:var(--muted);font-size:.75rem;cursor:pointer;transition:all .2s}
 .mri-btn:hover{color:var(--cream);border-color:rgba(255,255,255,0.3)}
 .mri-btn.fav{color:var(--gold-light);border-color:rgba(245,158,11,0.3)}
-.music-fav-section{margin-top:1rem}
-.music-fav-title{font-size:.75rem;letter-spacing:3px;color:var(--gold-light);opacity:.7;margin-bottom:.8rem}
-.music-status{text-align:center;font-size:.85rem;color:var(--muted);padding:1rem}
-
-/* BOTTOM MUSIC PLAYER */
-.bottom-player{
-  position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:rgba(8,6,22,0.97);
-  border-top:1px solid rgba(255,255,255,0.08);
-  padding:.8rem 1rem;
-  backdrop-filter:blur(24px);
-  transform:translateY(100%);
-  transition:transform .3s ease;
-}
+.bottom-player{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(8,6,22,0.97);border-top:1px solid rgba(255,255,255,0.08);padding:.8rem 1rem;backdrop-filter:blur(24px);transform:translateY(100%);transition:transform .3s ease}
 .bottom-player.show{transform:translateY(0)}
 .player-track{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
 .player-thumb{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--violet),var(--rose));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
@@ -213,8 +167,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .player-vol{display:flex;align-items:center;gap:.4rem;margin-top:.4rem}
 .vol-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,0.1);border-radius:3px;outline:none}
 .vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--violet-light);cursor:pointer}
-
-/* PROMISES */
 #page-promises{padding:62px 1rem 3rem;display:none}
 #page-promises.active{display:block}
 .promises-wrap{max-width:500px;margin:0 auto}
@@ -229,8 +181,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .promise-progress{background:rgba(255,255,255,0.04);border-radius:50px;height:6px;margin:1.2rem 0 1.5rem;overflow:hidden}
 .promise-bar{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--violet),var(--rose));transition:width .5s ease}
 .promise-pct{text-align:center;font-size:.8rem;color:var(--muted);margin-bottom:1rem}
-
-/* GAMES */
 #page-games{padding:62px 1rem 3rem;display:none}
 #page-games.active{display:block}
 .games-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:500px;margin:0 auto}
@@ -260,62 +210,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .quiz-opt.correct{background:rgba(34,197,94,0.15);border-color:rgba(34,197,94,0.4);color:#86efac}
 .quiz-opt.wrong{background:rgba(230,57,80,0.15);border-color:rgba(230,57,80,0.3);color:#fca5a5}
 .modal-close{position:absolute;top:1rem;left:1rem;background:rgba(255,255,255,0.06);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
-
-/* TOAST NOTIFICATION */
 .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%) translateY(-80px);z-index:9999;background:rgba(20,15,40,0.95);border:1px solid rgba(124,58,237,0.4);border-radius:16px;padding:.75rem 1.2rem;display:flex;align-items:center;gap:.7rem;backdrop-filter:blur(20px);transition:transform .4s ease;min-width:250px;max-width:340px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast-icon{font-size:1.3rem;flex-shrink:0}
 .toast-text{font-family:'Amiri',serif;font-size:.9rem;color:var(--cream);line-height:1.5}
-
-/* FLOATING HEARTS */
 .fheart{position:fixed;pointer-events:none;z-index:9000;font-size:1.5rem;animation:fup 1.1s ease forwards}
 @keyframes fup{0%{opacity:1;transform:translateY(0) scale(.5)}50%{opacity:.9;transform:translateY(-45px) scale(1.1)}100%{opacity:0;transform:translateY(-90px) scale(.7)}}
-
-/* STARS */
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .star{position:absolute;background:white;border-radius:50%;animation:twinkle ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.04}50%{opacity:.6}}
 </style>
 </head>
 <body>
-
 <div class="stars" id="stars"></div>
+<div class="toast" id="toast"><div class="toast-icon" id="toastIcon">💬</div><div class="toast-text" id="toastText"></div></div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <div class="toast-icon" id="toastIcon">💬</div>
-  <div class="toast-text" id="toastText"></div>
-</div>
-
-<!-- LOCK -->
 <div id="lock">
   <div class="lock-glass">
     <div class="lock-emoji">🔐</div>
     <div class="lock-title">حبوبتي</div>
     <div class="lock-sub">ادخلي الباسورد 💌</div>
-    <div class="pin-dots" id="pinDots">
-      <div class="dot" id="d0"></div>
-      <div class="dot" id="d1"></div>
-    </div>
+    <div class="pin-dots" id="pinDots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div></div>
     <div class="numpad">
-      <button class="key" data-k="١">١</button>
-      <button class="key" data-k="٢">٢</button>
-      <button class="key" data-k="٣">٣</button>
-      <button class="key" data-k="٤">٤</button>
-      <button class="key" data-k="٥">٥</button>
-      <button class="key" data-k="٦">٦</button>
-      <button class="key" data-k="٧">٧</button>
-      <button class="key" data-k="٨">٨</button>
-      <button class="key" data-k="٩">٩</button>
-      <button class="key empty"></button>
-      <button class="key" data-k="٠">٠</button>
-      <button class="key del" data-k="del">⌫</button>
+      <button class="key" data-k="١">١</button><button class="key" data-k="٢">٢</button><button class="key" data-k="٣">٣</button>
+      <button class="key" data-k="٤">٤</button><button class="key" data-k="٥">٥</button><button class="key" data-k="٦">٦</button>
+      <button class="key" data-k="٧">٧</button><button class="key" data-k="٨">٨</button><button class="key" data-k="٩">٩</button>
+      <button class="key empty"></button><button class="key" data-k="٠">٠</button><button class="key del" data-k="del">⌫</button>
     </div>
     <div class="lock-err" id="lockErr">❌ الرقم غلط، حاولي تاني</div>
   </div>
 </div>
 
-<!-- ROLE -->
 <div id="role-screen">
   <div class="role-title">مين بيفتح دلوقتي؟ 💑</div>
   <div class="role-btns">
@@ -324,7 +249,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <nav>
     <div class="nav-logo">حبوبتي ❤️</div>
@@ -332,23 +256,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
       <button class="nav-link active" onclick="goPage('home',this)">🏠</button>
       <button class="nav-link" onclick="goPage('gallery',this)">📸</button>
       <button class="nav-link" onclick="goPage('sorry',this)">💌</button>
-      <button class="nav-link" onclick="goPage('msgs',this)" id="msgsNavBtn">
-        💬 رسايل
-        <span class="nav-badge" id="msgBadge">0</span>
-      </button>
+      <button class="nav-link" onclick="goPage('msgs',this)" id="msgsNavBtn">💬 رسايل<span class="nav-badge" id="msgBadge">0</span></button>
       <button class="nav-link" onclick="goPage('music',this)">🎵 موسيقى</button>
       <button class="nav-link" onclick="goPage('promises',this)">🤝 وعود</button>
       <button class="nav-link" onclick="goPage('games',this)">🎮 العاب</button>
     </div>
   </nav>
 
-  <!-- HOME -->
   <div class="page active" id="page-home">
     <div class="bento">
-      <div class="bento-card bento-hero">
-        <div class="hero-title">حبوبتي</div>
-        <div class="hero-sub">إنتِ مش بس حبيبتي — إنتِ كل حاجه في حياتي 🌍</div>
-      </div>
+      <div class="bento-card bento-hero"><div class="hero-title">حبوبتي</div><div class="hero-sub">إنتِ مش بس حبيبتي — إنتِ كل حاجه في حياتي 🌍</div></div>
       <div class="bento-card bento-wide" style="text-align:center">
         <div class="counter-label">✦ مع بعض من ١٤ فبراير ٢٠٢٦ ✦</div>
         <div class="counter-nums">
@@ -374,20 +291,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     </div>
   </div>
 
-  <!-- GALLERY -->
   <div class="page" id="page-gallery">
     <div class="page-header"><h2>صورنا 📸</h2><p>اللحظات اللي بتفضل معانا دايماً</p></div>
     <div class="gallery-grid" id="galleryGrid">
       <div class="upload-card" id="uploadCard">
         <input type="file" accept="image/*" multiple onchange="uploadPhotos(event)">
-        <div class="upload-icon">📸</div>
-        <div class="upload-text">حطي صورة</div>
+        <div class="upload-icon">📸</div><div class="upload-text">حطي صورة</div>
       </div>
     </div>
     <div class="gallery-status" id="galStatus"></div>
   </div>
 
-  <!-- SORRY -->
   <div class="page" id="page-sorry">
     <div class="sorry-card">
       <span class="sorry-emoji">💙</span>
@@ -399,42 +313,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     </div>
   </div>
 
-  <!-- MESSAGES - واتساب ستايل -->
   <div class="page" id="page-msgs">
     <div class="chat-header">
       <div class="chat-avatar" id="chatAvatar">🌸</div>
       <div>
-        <div class="chat-name" id="chatName">حبوبتي</div>
-        <div class="chat-status" id="chatStatus">متصلة الآن 🟢</div>
+        <div class="chat-name" id="chatName">حبوبتي 🌸</div>
+        <div class="chat-status" id="chatStatus">جاري التحميل...</div>
       </div>
     </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-empty" id="chatEmpty">ابدأ المحادثة يا قمر 💌</div>
-    </div>
+    <div class="chat-body" id="chatBody"><div class="chat-empty">ابدأ المحادثة يا قمر 💌</div></div>
     <div class="chat-footer">
       <textarea class="chat-input" id="msgInput" placeholder="اكتب رسالة..." rows="1" onkeydown="msgKeydown(event)"></textarea>
       <button class="chat-send" onclick="sendMsg()">➤</button>
     </div>
   </div>
 
-  <!-- MUSIC PAGE -->
   <div class="page" id="page-music">
-    <div class="page-header"><h2>🎵 موسيقانا</h2><p>دور على أغنيتك من البوماتي</p></div>
-    <div class="music-search-wrap">
-      <div class="music-search-box">
-        <input class="music-search-input" id="musicSearchInput" placeholder="اسم الأغنية أو المطرب..." onkeydown="if(event.key==='Enter')searchMusic()">
-        <button class="music-search-btn" onclick="searchMusic()">🔍 دور</button>
+    <div class="page-header"><h2>🎵 موسيقانا</h2><p>تصفح البوماتي واختار أغنيتك</p></div>
+    <div style="max-width:540px;margin:0 auto;padding:0 1rem">
+      <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;margin-bottom:1rem">
+        <div style="padding:.8rem 1rem;border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:.7rem">
+          <span style="font-size:1rem">🎵</span>
+          <span style="font-size:.8rem;color:var(--muted);flex:1">albumaty.com</span>
+          <button onclick="reloadAlbumaty()" style="background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:8px;color:var(--muted);padding:.3rem .6rem;font-size:.75rem;cursor:pointer">🔄</button>
+          <button onclick="openAlbumatyTab()" style="background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:8px;color:var(--muted);padding:.3rem .6rem;font-size:.75rem;cursor:pointer">↗ افتح</button>
+        </div>
+        <iframe id="albumatyFrame" src="https://www.albumaty.com/" style="width:100%;height:65vh;border:none;background:#0f172a" allow="autoplay;encrypted-media" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"></iframe>
       </div>
-      <div id="musicStatus" class="music-status"></div>
-      <div class="music-results" id="musicResults"></div>
-      <div class="music-fav-section" id="favSection" style="display:none">
+      <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1rem;font-size:.82rem;color:var(--muted);line-height:1.8;font-family:'Amiri',serif">
+        💡 تصفح البوماتي فوق واضغط على أي أغنية عشان تتشغل
+      </div>
+      <div class="music-fav-section" id="favSection" style="display:none;margin-top:1rem">
         <div class="music-fav-title">⭐ أغنيتنا المفضلة</div>
         <div id="favTrack"></div>
       </div>
     </div>
   </div>
 
-  <!-- PROMISES -->
   <div class="page" id="page-promises">
     <div class="page-header"><h2>وعودنا 🤝</h2><p>الوعود اللي بنعدها لبعض</p></div>
     <div class="promises-wrap">
@@ -445,7 +360,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     </div>
   </div>
 
-  <!-- GAMES -->
   <div class="page" id="page-games">
     <div class="page-header"><h2>العابنا 🎮</h2><p>العبوا مع بعض واتمتعوا</p></div>
     <div class="games-grid">
@@ -457,7 +371,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   </div>
 </div>
 
-<!-- GAME MODAL -->
 <div class="game-modal" id="gameModal">
   <div class="game-modal-inner">
     <button class="modal-close" onclick="closeGame()">✕</button>
@@ -467,13 +380,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLB()">
-  <button class="lb-close">✕</button>
-  <img id="lbImg" src="" alt="">
-</div>
+<div id="lightbox" onclick="closeLB()"><button class="lb-close">✕</button><img id="lbImg" src="" alt=""></div>
 
-<!-- BOTTOM MUSIC PLAYER -->
 <div class="bottom-player" id="bottomPlayer">
   <div class="player-track">
     <div class="player-thumb">🎵</div>
@@ -483,16 +391,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     </div>
   </div>
   <div class="player-controls">
-    <button class="player-btn" onclick="prevTrack()">⏮</button>
     <button class="player-play" id="playerPlayBtn" onclick="togglePlay()">▶</button>
-    <button class="player-btn" onclick="nextTrack()">⏭</button>
     <button class="player-btn" id="favBtn" onclick="toggleFav()" title="حفظ كأغنية مفضلة">☆</button>
   </div>
   <div class="player-progress">
     <span class="progress-time" id="timeCurrent">0:00</span>
-    <div class="progress-bar" onclick="seekAudio(event)">
-      <div class="progress-fill" id="progressFill" style="width:0%"></div>
-    </div>
+    <div class="progress-bar" onclick="seekAudio(event)"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     <span class="progress-time" id="timeDuration">0:00</span>
   </div>
   <div class="player-vol">
@@ -501,38 +405,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     <span style="font-size:.8rem">🔊</span>
   </div>
 </div>
-
 <audio id="mainAudio"></audio>
-
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 <script>
-// ══ FIREBASE ══
-var cfg={
-  apiKey:"AIzaSyDOxflWMXRninoAJ6DH2CVUR4dNCgzCArs",
-  authDomain:"habobti-727fd.firebaseapp.com",
-  databaseURL:"https://habobti-727fd-default-rtdb.firebaseio.com",
-  projectId:"habobti-727fd",
-  storageBucket:"habobti-727fd.firebasestorage.app",
-  messagingSenderId:"969867541051",
-  appId:"1:969867541051:web:72f55ea9f78d23d6cdfa1e"
-};
+var cfg={apiKey:"AIzaSyDOxflWMXRninoAJ6DH2CVUR4dNCgzCArs",authDomain:"habobti-727fd.firebaseapp.com",databaseURL:"https://habobti-727fd-default-rtdb.firebaseio.com",projectId:"habobti-727fd",storageBucket:"habobti-727fd.firebasestorage.app",messagingSenderId:"969867541051",appId:"1:969867541051:web:72f55ea9f78d23d6cdfa1e"};
 firebase.initializeApp(cfg);
 var db=firebase.database();
 var R=function(p){return db.ref(p);};
 
-// ══ STARS ══
-(function(){
-  var s=document.getElementById('stars');
-  for(var i=0;i<100;i++){
-    var el=document.createElement('div');el.className='star';
-    var z=Math.random()*2+.3;
-    el.style.cssText='width:'+z+'px;height:'+z+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-duration:'+(Math.random()*4+2)+'s;animation-delay:'+(Math.random()*5)+'s';
-    s.appendChild(el);
-  }
-})();
+(function(){var s=document.getElementById('stars');for(var i=0;i<100;i++){var el=document.createElement('div');el.className='star';var z=Math.random()*2+.3;el.style.cssText='width:'+z+'px;height:'+z+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-duration:'+(Math.random()*4+2)+'s;animation-delay:'+(Math.random()*5)+'s';s.appendChild(el);}})();
 
-// ══ PIN ══
 var PIN='٢٧',pin='';
 document.querySelectorAll('.key').forEach(function(k){
   k.addEventListener('click',function(){
@@ -561,62 +444,50 @@ function checkPin(){
   }
 }
 
-// ══ ROLE ══
 var whoami='me';
 window.setRole=function(r){
   whoami=r;
   document.getElementById('role-screen').classList.remove('show');
   document.getElementById('app').classList.add('show');
-  if(r==='me'){
-    document.getElementById('chatAvatar').textContent='🌸';
-    document.getElementById('chatName').textContent='حبوبتي 🌸';
-  }else{
-    document.getElementById('chatAvatar').textContent='💙';
-    document.getElementById('chatName').textContent='حمودي 💙';
-  }
+  if(r==='me'){document.getElementById('chatAvatar').textContent='🌸';document.getElementById('chatName').textContent='حبوبتي 🌸';}
+  else{document.getElementById('chatAvatar').textContent='💙';document.getElementById('chatName').textContent='حمودي 💙';}
   initApp();
   requestNotifPermission();
 };
 
-// ══ NAV ══
+var unreadCount=0;
 window.goPage=function(name,btn){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active');});
   document.getElementById('page-'+name).classList.add('active');
   if(btn)btn.classList.add('active');
   if(name==='msgs'){
+    unreadCount=0;
     document.getElementById('msgBadge').classList.remove('show');
     document.getElementById('msgBadge').textContent='0';
-    unreadCount=0;
     setTimeout(function(){var cb=document.getElementById('chatBody');cb.scrollTop=cb.scrollHeight;},100);
   }
 };
 
-// ══ NOTIFICATIONS ══
-var unreadCount=0;
-var lastMsgTs=0;
 function requestNotifPermission(){
-  if('Notification' in window && Notification.permission==='default'){
-    Notification.requestPermission();
-  }
+  if('Notification' in window&&Notification.permission==='default')Notification.requestPermission();
 }
-function showNotif(text,from){
-  // toast
+
+function showToast(msg,icon){
   var toast=document.getElementById('toast');
-  document.getElementById('toastIcon').textContent=from==='me'?'💙':'🌸';
-  document.getElementById('toastText').textContent=(from==='me'?'حمودي: ':'حبوبتي: ')+text;
+  document.getElementById('toastIcon').textContent=icon||'✨';
+  document.getElementById('toastText').textContent=msg;
   toast.classList.add('show');
   setTimeout(function(){toast.classList.remove('show');},4000);
-  // push notification
-  if('Notification' in window && Notification.permission==='granted'){
-    new Notification(from==='me'?'💙 حمودي':'🌸 حبوبتي',{
-      body:text,
-      icon:'https://emojicdn.elk.sh/❤️'
-    });
+}
+
+function showNotif(text,from){
+  showToast((from==='me'?'حمودي: ':'حبوبتي: ')+text, from==='me'?'💙':'🌸');
+  if('Notification' in window&&Notification.permission==='granted'){
+    new Notification(from==='me'?'💙 حمودي':'🌸 حبوبتي',{body:text,icon:'https://emojicdn.elk.sh/❤️'});
   }
-  // badge
-  var currentPage=document.querySelector('.page.active');
-  if(!currentPage||currentPage.id!=='page-msgs'){
+  var activePage=document.querySelector('.page.active');
+  if(!activePage||activePage.id!=='page-msgs'){
     unreadCount++;
     var badge=document.getElementById('msgBadge');
     badge.textContent=unreadCount;
@@ -624,7 +495,6 @@ function showNotif(text,from){
   }
 }
 
-// ══ COUNTER ══
 var START=new Date('2026-02-14T00:00:00');
 function updateCounter(){
   var now=new Date(),diff=now-START;if(diff<0)diff=0;
@@ -637,7 +507,6 @@ function updateCounter(){
   document.getElementById('statDays').textContent=d;
 }
 
-// ══ LOVE MSGS ══
 var msgs=['"إنتِ أجمل حاجة حصلتلي في حياتي 🌹"','"حبك مش حاجة بشعر بيها — ده حاجة بعيشها كل ثانية ❤️"','"من غيرك الدنيا مش بتبقى منطقية 💫"','"إنتِ بيتي اللي بيجي في بالي لما بحس بالتعب 🏠"','"ضحكتك بتخلي يومي يبقى تمام 😊"','"بحبك مش عشان محتاجك — بحتاجك عشان بحبك 💙"','"إنتِ الحاجة الوحيدة اللي عمري ما هتزهق منها 🌙"','"لو أقدر أختار تاني، هختارك أنتِ في كل مرة ✨"'];
 var msgIdx=0;
 window.nextMsg=function(){
@@ -645,20 +514,10 @@ window.nextMsg=function(){
   var el=document.getElementById('loveMsg');
   el.style.opacity='0';
   setTimeout(function(){el.textContent=msgs[msgIdx];el.style.opacity='1';},200);
-  spawnHearts(el);
-};
-function spawnHearts(el){
   var r=el.getBoundingClientRect();
-  ['❤️','💕','🌹','✨'].forEach(function(e,i){
-    setTimeout(function(){
-      var h=document.createElement('div');h.className='fheart';h.textContent=e;
-      h.style.left=(r.left+Math.random()*r.width)+'px';h.style.top=r.top+'px';
-      document.body.appendChild(h);setTimeout(function(){h.remove();},1100);
-    },i*120);
-  });
-}
+  ['❤️','💕','🌹','✨'].forEach(function(e,i){setTimeout(function(){var h=document.createElement('div');h.className='fheart';h.textContent=e;h.style.left=(r.left+Math.random()*r.width)+'px';h.style.top=r.top+'px';document.body.appendChild(h);setTimeout(function(){h.remove();},1100);},i*120);});
+};
 
-// ══ GALLERY ══
 var CLOUD='dnj6i7q0u',PRESET='habobti';
 function loadGallery(){
   R('gallery').on('value',function(snap){
@@ -695,7 +554,6 @@ window.uploadPhotos=function(e){
 window.openLB=function(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');};
 window.closeLB=function(){document.getElementById('lightbox').classList.remove('open');};
 
-// ══ SORRY ══
 var sorryItems=[{text:'لما بكون مشغول ومش بديك وقتك 🕐',checked:false},{text:'لما بتكلم بطريقة مش لايقة 😔',checked:false},{text:'لما مش بسمعك صح وأنا مشتت 👂',checked:false},{text:'لما بزعّلك وأنا أصلاً مش قاصد 💔',checked:false},{text:'لما بخلّيكِ تحسي إنك لوحدك 🫂',checked:false}];
 var sorryReplies=['وعد منك ده بيستاهل كل حاجة ❤️','بحبك يا حمودي، بس متعيدهاش 😤💕','طب ماشي، بسامحك بس مرة واحدة 😅','الله يسامحك 🌹 وأنا كمان بسامحك','يلا، اتقبل الاعتذار 🤍 بحبك برضو'];
 function renderSorry(){
@@ -712,59 +570,33 @@ window.sendSorry=function(){
   var el=document.getElementById('sorryReply');
   el.style.opacity='0';
   setTimeout(function(){el.textContent='"'+reply+'"';el.style.opacity='1';},200);
-  for(var i=0;i<8;i++){(function(idx){setTimeout(function(){
-    var h=document.createElement('div');h.className='fheart';
-    h.textContent=['❤️','💕','🌹','💙','✨','🌸'][Math.floor(Math.random()*6)];
-    h.style.left=Math.random()*window.innerWidth+'px';h.style.top=(window.innerHeight*.6)+'px';
-    h.style.fontSize=(1.2+Math.random())+'rem';
-    document.body.appendChild(h);setTimeout(function(){h.remove();},1200);
-  },idx*100);})(i);}
+  for(var i=0;i<8;i++){(function(idx){setTimeout(function(){var h=document.createElement('div');h.className='fheart';h.textContent=['❤️','💕','🌹','💙','✨','🌸'][Math.floor(Math.random()*6)];h.style.left=Math.random()*window.innerWidth+'px';h.style.top=(window.innerHeight*.6)+'px';h.style.fontSize=(1.2+Math.random())+'rem';document.body.appendChild(h);setTimeout(function(){h.remove();},1200);},idx*100);})(i);}
 };
 
-// ══ MESSAGES - واتساب ستايل ══
-var msgsLoaded=false;
-function formatTime(ts){
-  var d=new Date(ts);
-  return d.getHours()+':'+(String(d.getMinutes()).padStart(2,'0'));
-}
-function formatDate(ts){
-  var d=new Date(ts);
-  var today=new Date();
-  var yesterday=new Date(today-86400000);
-  if(d.toDateString()===today.toDateString())return 'اليوم';
-  if(d.toDateString()===yesterday.toDateString())return 'أمس';
-  return d.toLocaleDateString('ar-EG');
-}
+var lastMsgTs=0;
+var initLoad=true;
+function formatTime(ts){var d=new Date(ts);return d.getHours()+':'+(String(d.getMinutes()).padStart(2,'0'));}
+function formatDate(ts){var d=new Date(ts);var today=new Date();var yesterday=new Date(today-86400000);if(d.toDateString()===today.toDateString())return 'اليوم';if(d.toDateString()===yesterday.toDateString())return 'أمس';return d.toLocaleDateString('ar-EG');}
 function loadMsgs(){
-  var initLoad=true;
+  initLoad=true;
   R('messages').on('value',function(snap){
     var data=snap.val();
     var body=document.getElementById('chatBody');
     body.innerHTML='';
-    if(!data){body.innerHTML='<div class="chat-empty">ابدأ المحادثة يا قمر 💌</div>';return;}
+    if(!data){body.innerHTML='<div class="chat-empty">ابدأ المحادثة يا قمر 💌</div>';initLoad=false;return;}
     var items=Object.values(data).sort(function(a,b){return(a.ts||0)-(b.ts||0);});
     var lastDate='';
     items.forEach(function(m){
       var mDate=formatDate(m.ts||0);
-      if(mDate!==lastDate){
-        var div=document.createElement('div');div.className='chat-date-divider';div.textContent=mDate;
-        body.appendChild(div);lastDate=mDate;
-      }
+      if(mDate!==lastDate){var div=document.createElement('div');div.className='chat-date-divider';div.textContent=mDate;body.appendChild(div);lastDate=mDate;}
       var row=document.createElement('div');
       var isMe=m.by==='me';
       row.className='msg-row '+(isMe?'me':'her');
-      var avEl=document.createElement('div');
-      avEl.className='msg-avatar-sm '+(isMe?'me-av':'her-av');
-      avEl.textContent=isMe?'💙':'🌸';
-      var bub=document.createElement('div');
-      bub.className='bubble '+(isMe?'me':'her');
+      var avEl=document.createElement('div');avEl.className='msg-avatar-sm '+(isMe?'me-av':'her-av');avEl.textContent=isMe?'💙':'🌸';
+      var bub=document.createElement('div');bub.className='bubble '+(isMe?'me':'her');
       bub.innerHTML='<div>'+m.text+'</div><div class="bubble-time">'+(isMe?'<span class="bubble-tick">✓✓</span>':'')+formatTime(m.ts||0)+'</div>';
-      row.appendChild(avEl);row.appendChild(bub);
-      body.appendChild(row);
-      // إشعار للرسائل الجديدة
-      if(!initLoad && m.ts>lastMsgTs && m.by!==whoami){
-        showNotif(m.text,m.by);
-      }
+      row.appendChild(avEl);row.appendChild(bub);body.appendChild(row);
+      if(!initLoad&&m.ts>lastMsgTs&&m.by!==whoami)showNotif(m.text,m.by);
       if(m.ts>lastMsgTs)lastMsgTs=m.ts;
     });
     body.scrollTop=body.scrollHeight;
@@ -772,8 +604,7 @@ function loadMsgs(){
   });
 }
 window.sendMsg=function(){
-  var inp=document.getElementById('msgInput');
-  var txt=inp.value.trim();if(!txt)return;
+  var inp=document.getElementById('msgInput');var txt=inp.value.trim();if(!txt)return;
   R('messages').push({text:txt,by:whoami,ts:Date.now()});
   inp.value='';inp.style.height='42px';
 };
@@ -782,193 +613,79 @@ window.msgKeydown=function(e){
   var inp=e.target;inp.style.height='42px';inp.style.height=Math.min(inp.scrollHeight,100)+'px';
 };
 
-// ══ MUSIC - البوماتي ══
-var playlist=[];
-var currentIdx=-1;
-var isPlaying=false;
-var favTrack=null;
-
-// جلب نتائج من البوماتي عبر البحث
-window.searchMusic=function(){
-  var q=document.getElementById('musicSearchInput').value.trim();
-  if(!q)return;
-  var st=document.getElementById('musicStatus');
-  var res=document.getElementById('musicResults');
-  st.textContent='جاري البحث...';
-  res.innerHTML='';
-  // البحث عبر RSS/API البوماتي
-  var url='https://www.albumaty.com/search.php?q='+encodeURIComponent(q);
-  fetch('https://api.allorigins.win/get?url='+encodeURIComponent(url))
-    .then(function(r){return r.json();})
-    .then(function(d){
-      var parser=new DOMParser();
-      var doc=parser.parseFromString(d.contents,'text/html');
-      // استخراج نتائج الأغاني
-      var links=doc.querySelectorAll('a[href*="/song/"]');
-      var results=[];
-      links.forEach(function(a){
-        var title=a.textContent.trim();
-        var href=a.getAttribute('href');
-        if(title&&href&&title.length>2&&results.length<10){
-          var fullUrl=href.startsWith('http')?href:'https://www.albumaty.com'+href;
-          // تجنب التكرار
-          if(!results.find(function(r){return r.url===fullUrl;})){
-            results.push({title:title,url:fullUrl});
-          }
-        }
-      });
-      if(!results.length){st.textContent='مفيش نتايج، جرب كلمة تانية';return;}
-      st.textContent='اتوجدت '+results.length+' نتيجة — اضغط على الأغنية للتشغيل';
-      playlist=results;
-      results.forEach(function(item,i){
-        var div=document.createElement('div');
-        div.className='music-result-item';
-        div.innerHTML='<div class="mri-icon">🎵</div><div class="mri-info"><div class="mri-title">'+item.title+'</div><div class="mri-artist">البوماتي</div></div><div class="mri-actions"><button class="mri-btn" onclick="playFromSearch('+i+');event.stopPropagation()">▶ شغّل</button><button class="mri-btn" onclick="openAlbumaty(\''+item.url+'\');event.stopPropagation()">🔗 البوماتي</button></div>';
-        div.onclick=function(){playFromSearch(i);};
-        res.appendChild(div);
-      });
-    })
-    .catch(function(){
-      st.textContent='في مشكلة في البحث، افتح البوماتي مباشرة 👇';
-      res.innerHTML='<div style="text-align:center;padding:1rem"><a href="https://www.albumaty.com/search.php?q='+encodeURIComponent(q)+'" target="_blank" style="color:var(--violet-light);text-decoration:none;font-size:.9rem">🔗 ابحث على البوماتي مباشرة</a></div>';
-    });
-};
-
-window.openAlbumaty=function(url){
-  window.open(url,'_blank');
-};
-
-// تشغيل أغنية من نتائج البحث
-window.playFromSearch=function(idx){
-  currentIdx=idx;
-  var item=playlist[idx];
-  // فتح صفحة الأغنية لجلب رابط الـ MP3
-  document.getElementById('musicStatus').textContent='جاري تحميل الأغنية...';
-  document.querySelectorAll('.music-result-item').forEach(function(el,i){
-    el.classList.toggle('playing',i===idx);
-  });
-  fetch('https://api.allorigins.win/get?url='+encodeURIComponent(item.url))
-    .then(function(r){return r.json();})
-    .then(function(d){
-      var parser=new DOMParser();
-      var doc=parser.parseFromString(d.contents,'text/html');
-      // ابحث عن رابط MP3
-      var mp3Link=null;
-      var sources=doc.querySelectorAll('source[src], audio[src], a[href$=".mp3"]');
-      sources.forEach(function(s){
-        var src=s.getAttribute('src')||s.getAttribute('href');
-        if(src&&src.includes('.mp3')&&!mp3Link)mp3Link=src;
-      });
-      if(!mp3Link){
-        // بحث في الـ HTML نص عن mp3
-        var html=d.contents;
-        var match=html.match(/https?:\/\/[^"'\s]+\.mp3/);
-        if(match)mp3Link=match[0];
-      }
-      if(mp3Link){
-        loadAndPlay(mp3Link,item.title,'البوماتي');
-        document.getElementById('musicStatus').textContent='';
-      }else{
-        document.getElementById('musicStatus').textContent='مش قادر يشغّل أوتوماتيك — افتح البوماتي مباشرة';
-        window.open(item.url,'_blank');
-      }
-    })
-    .catch(function(){
-      document.getElementById('musicStatus').textContent='افتح البوماتي مباشرة 🎵';
-      window.open(item.url,'_blank');
-    });
-};
-
-function loadAndPlay(src,title,artist){
-  var audio=document.getElementById('mainAudio');
-  audio.src=src;
-  audio.volume=parseFloat(document.getElementById('volSlider').value);
-  audio.play().then(function(){
-    isPlaying=true;
-    document.getElementById('playerPlayBtn').textContent='⏸';
-    document.getElementById('playerTitle').textContent=title||'أغنية';
-    document.getElementById('playerArtist').textContent=artist||'البوماتي';
-    document.getElementById('bottomPlayer').classList.add('show');
-    updateFavBtn();
-  }).catch(function(){
-    document.getElementById('musicStatus').textContent='مش قادر يشغّل — جرب افتح البوماتي مباشرة';
+function updateLastSeen(){
+  R('presence/'+whoami).set({online:true,ts:Date.now()});
+  window.addEventListener('beforeunload',function(){R('presence/'+whoami).set({online:false,ts:Date.now()});});
+  setInterval(function(){R('presence/'+whoami).set({online:true,ts:Date.now()});},60000);
+}
+function watchOtherPresence(){
+  var other=whoami==='me'?'her':'me';
+  R('presence/'+other).on('value',function(snap){
+    var d=snap.val();var el=document.getElementById('chatStatus');
+    if(!d){el.textContent='لسه مجاش 🔴';return;}
+    if(d.online){el.textContent='متصل/ة دلوقتي 🟢';}
+    else{
+      var diff=Date.now()-(d.ts||0);
+      var mins=Math.floor(diff/60000),hrs=Math.floor(diff/3600000),days=Math.floor(diff/86400000);
+      if(mins<1)el.textContent='آخر ظهور: دلوقتي';
+      else if(mins<60)el.textContent='آخر ظهور: من '+mins+' دقيقة';
+      else if(hrs<24)el.textContent='آخر ظهور: من '+hrs+' ساعة';
+      else el.textContent='آخر ظهور: من '+days+' يوم';
+    }
   });
 }
 
+window.reloadAlbumaty=function(){var fr=document.getElementById('albumatyFrame');fr.src=fr.src;};
+window.openAlbumatyTab=function(){window.open('https://www.albumaty.com/','_blank');};
+
+var isPlaying=false;var favTrack=null;var currentSrc='';var currentTitle='';
+var mainAudio=document.getElementById('mainAudio');
+mainAudio.addEventListener('timeupdate',function(){
+  if(!mainAudio.duration)return;
+  document.getElementById('progressFill').style.width=(mainAudio.currentTime/mainAudio.duration*100)+'%';
+  document.getElementById('timeCurrent').textContent=fmtTime(mainAudio.currentTime);
+  document.getElementById('timeDuration').textContent=fmtTime(mainAudio.duration);
+});
+mainAudio.addEventListener('ended',function(){isPlaying=false;document.getElementById('playerPlayBtn').textContent='▶';});
+function fmtTime(s){var m=Math.floor(s/60);return m+':'+(String(Math.floor(s%60)).padStart(2,'0'));}
 window.togglePlay=function(){
-  var audio=document.getElementById('mainAudio');
-  if(isPlaying){audio.pause();document.getElementById('playerPlayBtn').textContent='▶';}
-  else{audio.play();document.getElementById('playerPlayBtn').textContent='⏸';}
+  if(isPlaying){mainAudio.pause();document.getElementById('playerPlayBtn').textContent='▶';}
+  else{mainAudio.play();document.getElementById('playerPlayBtn').textContent='⏸';}
   isPlaying=!isPlaying;
 };
-window.prevTrack=function(){
-  if(currentIdx>0){currentIdx--;playFromSearch(currentIdx);}
-};
-window.nextTrack=function(){
-  if(currentIdx<playlist.length-1){currentIdx++;playFromSearch(currentIdx);}
-};
+window.seekAudio=function(e){if(!mainAudio.duration)return;var bar=e.currentTarget;var rect=bar.getBoundingClientRect();mainAudio.currentTime=((e.clientX-rect.left)/rect.width)*mainAudio.duration;};
+window.setVol=function(v){mainAudio.volume=parseFloat(v);};
 window.toggleFav=function(){
-  if(currentIdx<0||!playlist[currentIdx])return;
-  favTrack=playlist[currentIdx];
-  // حفظ في Firebase
-  R('favTrack').set({title:favTrack.title,url:favTrack.url,ts:Date.now()});
+  if(!currentSrc)return;
+  favTrack={title:currentTitle,src:currentSrc,ts:Date.now()};
+  R('favTrack').set(favTrack);
   document.getElementById('favBtn').textContent='★';
   document.getElementById('favBtn').style.color='var(--gold-light)';
-  showToast('⭐ اتحفظت كأغنية مفضلة!');
+  showToast('⭐ اتحفظت كأغنية مفضلة!','⭐');
 };
-function updateFavBtn(){
-  if(!favTrack||!playlist[currentIdx])return;
-  var isFav=favTrack.url===playlist[currentIdx].url;
-  document.getElementById('favBtn').textContent=isFav?'★':'☆';
-  document.getElementById('favBtn').style.color=isFav?'var(--gold-light)':'';
-}
 function loadFavTrack(){
   R('favTrack').on('value',function(snap){
-    var d=snap.val();
-    if(!d)return;
+    var d=snap.val();if(!d)return;
     favTrack=d;
-    var sec=document.getElementById('favSection');
-    var favEl=document.getElementById('favTrack');
-    sec.style.display='block';
-    favEl.innerHTML='<div class="music-result-item" onclick="playFav()"><div class="mri-icon">⭐</div><div class="mri-info"><div class="mri-title">'+d.title+'</div><div class="mri-artist">أغنيتنا المفضلة</div></div><div class="mri-actions"><button class="mri-btn fav" onclick="playFav();event.stopPropagation()">▶ شغّل</button></div></div>';
+    var sec=document.getElementById('favSection');sec.style.display='block';
+    document.getElementById('favTrack').innerHTML='<div class="music-result-item" onclick="playFavTrack()"><div class="mri-icon">⭐</div><div class="mri-info"><div class="mri-title">'+d.title+'</div><div class="mri-artist">أغنيتنا المفضلة</div></div><div style="flex-shrink:0"><button class="mri-btn fav" onclick="playFavTrack();event.stopPropagation()">▶ شغّل</button></div></div>';
   });
 }
-window.playFav=function(){
-  if(!favTrack)return;
-  playlist=[favTrack];currentIdx=0;
-  playFromSearch(0);
+window.playFavTrack=function(){
+  if(!favTrack||!favTrack.src)return;
+  mainAudio.src=favTrack.src;
+  mainAudio.volume=parseFloat(document.getElementById('volSlider').value);
+  mainAudio.play().then(function(){
+    isPlaying=true;currentSrc=favTrack.src;currentTitle=favTrack.title;
+    document.getElementById('playerPlayBtn').textContent='⏸';
+    document.getElementById('playerTitle').textContent=favTrack.title;
+    document.getElementById('playerArtist').textContent='البوماتي ⭐';
+    document.getElementById('bottomPlayer').classList.add('show');
+    document.getElementById('favBtn').textContent='★';
+    document.getElementById('favBtn').style.color='var(--gold-light)';
+  }).catch(function(){showToast('مش قادر يشغّل الأغنية دي','❌');});
 };
 
-// progress bar
-var audio=document.getElementById('mainAudio');
-audio.addEventListener('timeupdate',function(){
-  if(!audio.duration)return;
-  var pct=(audio.currentTime/audio.duration*100);
-  document.getElementById('progressFill').style.width=pct+'%';
-  document.getElementById('timeCurrent').textContent=fmtTime(audio.currentTime);
-  document.getElementById('timeDuration').textContent=fmtTime(audio.duration);
-});
-audio.addEventListener('ended',function(){nextTrack();});
-function fmtTime(s){
-  var m=Math.floor(s/60);return m+':'+(String(Math.floor(s%60)).padStart(2,'0'));
-}
-window.seekAudio=function(e){
-  if(!audio.duration)return;
-  var bar=e.currentTarget;var rect=bar.getBoundingClientRect();
-  var pct=(e.clientX-rect.left)/rect.width;
-  audio.currentTime=pct*audio.duration;
-};
-window.setVol=function(v){audio.volume=parseFloat(v);};
-
-function showToast(msg){
-  var toast=document.getElementById('toast');
-  document.getElementById('toastIcon').textContent='✨';
-  document.getElementById('toastText').textContent=msg;
-  toast.classList.add('show');
-  setTimeout(function(){toast.classList.remove('show');},3000);
-}
-
-// ══ PROMISES ══
 var defaultPromises=[{text:'نسافر مع بعض 🌍',done:false},{text:'نفضل مع بعض دايماً 💑',done:false},{text:'مش نزعل من بعض كتير 🕊️',done:false},{text:'نحتفل بذكرى سنوية 🥂',done:false},{text:'نتعلم حاجة جديدة مع بعض 📚',done:false}];
 function loadPromises(){
   R('promises').on('value',function(snap){
@@ -989,13 +706,8 @@ function loadPromises(){
     });
   });
 }
-window.addPromise=function(){
-  var txt=prompt('اكتب الوعد الجديد:');
-  if(!txt)return;
-  R('promises').push({text:txt,done:false});
-};
+window.addPromise=function(){var txt=prompt('اكتب الوعد الجديد:');if(!txt)return;R('promises').push({text:txt,done:false});};
 
-// ══ GAMES ══
 var todTruths=['إيه أول حاجة لفت نظرك فيّ؟','إيه أكتر لحظة بتتذكرها معايا؟','لو تقدر تغير حاجة في شخصيتي، هتغير إيه؟','إيه أكتر حاجة بتحبها فيّ؟','بتحبني قد إيه من ١ لـ ١٠؟','إيه حلمك اللي عايز نعمله مع بعض؟','إيه أحلى يوم عشته معايا؟','بتفتكرنا مع بعض بعد ١٠ سنين؟'];
 var todDares=['ابعتلي أحلى صورة في تليفونك 📸','قولي ٣ حاجات بتحبها فيّا 💕','قولي جملة حب بصوتك 🎤','اعملي دنسة وابعتهالي فيديو 💃','اكتبلي أجمل رسالة حب ممكنة 💌','سمّيلي بالاسم الحلو اللي بتناديني بيه 🥰'];
 var quizQs=[{q:'إيه لون عينيّا؟',opts:['بني','أسود','أخضر','أزرق'],ans:0},{q:'إيه أكل أكتر بحبه؟',opts:['بيتزا','كشري','مكرونة','كبدة'],ans:2},{q:'إيه موسيقاي المفضلة؟',opts:['راب','شعبي','طرب','بوب'],ans:0},{q:'إيه هوايتي؟',opts:['رسم','موسيقى','سينما','رياضة'],ans:2},{q:'إيه الدراما اللي بحبها؟',opts:['أكشن','رومانسي','كوميدي','رعب'],ans:1}];
@@ -1023,7 +735,7 @@ window.flipCard=function(){document.getElementById('flipCard').classList.toggle(
 function showQuizQ(){
   if(quizIdx>=quizQs.length){
     document.getElementById('gameTitle').textContent='النتيجة 🏆';
-    document.getElementById('gameContent').innerHTML='<div class="love-score">'+quizScore+'/'+quizQs.length+'</div><div style="font-family:Amiri,serif;color:var(--muted);margin:.5rem 0">'+(quizScore===quizQs.length?'ماشاء الله، عارفني زي ما بعرف نفسي 💕':quizScore>=3?'كويس بس في حاجات لازم تعرفها أكتر 😊':'لازم تقعد معايا وتعرفني أحسن 😄')+'</div><div class="love-meter"><div class="love-meter-fill" style="width:'+(quizScore/quizQs.length*100)+'%"></div></div>';
+    document.getElementById('gameContent').innerHTML='<div class="love-score">'+quizScore+'/'+quizQs.length+'</div><div style="font-family:Amiri,serif;color:var(--muted);margin:.5rem 0">'+(quizScore===quizQs.length?'ماشاء الله 💕':quizScore>=3?'كويس 😊':'لازم تعرفني أحسن 😄')+'</div><div class="love-meter"><div class="love-meter-fill" style="width:'+(quizScore/quizQs.length*100)+'%"></div></div>';
     document.getElementById('gameBtns').innerHTML='<button class="game-btn" onclick="quizIdx=0;quizScore=0;showQuizQ()">العب تاني 🔄</button>';
     return;
   }
@@ -1063,21 +775,19 @@ window.measureLove=function(){
   document.getElementById('lMsg').textContent=ms[Math.floor(Math.random()*ms.length)];
 };
 
-// ══ FLOATING HEARTS ══
 document.getElementById('app').addEventListener('click',function(e){
-  if(e.target.closest('.music-player,.bottom-player,nav,.gallery-item,.upload-card,.love-card,#lightbox,.game-modal,.chat-footer'))return;
+  if(e.target.closest('.bottom-player,nav,.gallery-item,.upload-card,.love-card,#lightbox,.game-modal,.chat-footer'))return;
   var h=document.createElement('div');h.className='fheart';
   h.textContent=['❤️','💕','🌹','💫'][Math.floor(Math.random()*4)];
   h.style.left=(e.clientX-12)+'px';h.style.top=(e.clientY-12)+'px';
   document.body.appendChild(h);setTimeout(function(){h.remove();},1100);
 });
-
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLB();closeGame();}});
 
-// ══ INIT ══
 function initApp(){
   updateCounter();setInterval(updateCounter,1000);
   renderSorry();loadGallery();loadMsgs();loadPromises();loadFavTrack();
+  updateLastSeen();watchOtherPresence();
 }
 </script>
 </body>
